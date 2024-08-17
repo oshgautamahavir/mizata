@@ -45,10 +45,11 @@ const App = () => {
     getItems((currentPage-1)*10)
   }, [currentPage, getItems])
 
+  const BASE_URL = 'http://localhost:3000/api/items'
+
   //Fetch items
   const fetchItems = async() => {
-    const response = await fetch('http://localhost:5000/items')
-    console.log(response, 'rawr')
+    const response = await fetch(BASE_URL)
     const data = await response.json()
 
     return data
@@ -56,9 +57,7 @@ const App = () => {
 
   //Add item
   const addItem = async (item) => {
-    const today = new Date()
-    item['date_added'] = today
-    await fetch ('http://localhost:5000/items', {
+    await fetch (BASE_URL, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -71,7 +70,7 @@ const App = () => {
 
   //Delete item
   const deleteItem = async (id) => {
-    await fetch(`http://localhost:5000/items/${id}`, {
+    await fetch(BASE_URL + '/' + id, {
       method: 'DELETE'
     })
     getItems((currentPage-1)*10)
@@ -79,7 +78,8 @@ const App = () => {
 
   //Edit item
   const editItem = async (item, id) => {
-    await fetch (`http://localhost:5000/items/${id}`, {
+    console.log(id, 'rawr', item, item._id)
+    await fetch (BASE_URL + '/' + id, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',

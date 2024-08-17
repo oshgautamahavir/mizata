@@ -19,24 +19,12 @@ const ViewItemModal = ({ showViewModal, onClose, onEdit, item }) => {
     setDescription(item.description);
     setQuantity(item.quantity);
     setPrice(item.price);
-    setDate(item.date_added);
+    setDate(item.createdAt);
   }, [item])
 
   useEffect(() => {
     setTotalPrice(quantity * price);
   }, [quantity, price]);
-
-  useEffect(() => {
-    let newDate = new Date(date);
-
-    let formattedDate = newDate.toLocaleDateString("en-US", {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-
-    setDate(formattedDate)
-  }, [date])
 
   if (!showViewModal) {
     return null;
@@ -51,8 +39,7 @@ const ViewItemModal = ({ showViewModal, onClose, onEdit, item }) => {
   }
 
   const handleEditItem = () => {
-    const date_added = item.date_added
-    onEdit({ name, description, quantity, price, 'status': 0, date_added }, item.id)
+    onEdit({ name, description, quantity, price, 'status': 0 }, item._id)
     toggleEditMode()
     toggleConfirmEditModal()
     onClose()

@@ -35,7 +35,7 @@ const Item = ({ item, onDelete, onEdit }) => {
         <DeleteConfirmationModal 
           showDeleteModal={showDeleteModal}
           closeModal={toggleDeleteModal}
-          onDelete={() => onDelete(item.id)}
+          onDelete={() => onDelete(item._id)}
         />
       </div>
     </div>
