@@ -5,6 +5,8 @@ import EmptyState from "./components/Item/EmptyState";
 import Navbar from "./components/Navbar/Navbar";
 import SuccessModal from "./components/Modals/SuccessModal";
 
+import { fetchItems, addItem, deleteItem, editItem } from "./store/index";
+
 const App = () => {
   const [items, setItems] = useState([])
   const [itemsCount, setItemsCount] = useState(0)
@@ -45,48 +47,20 @@ const App = () => {
     getItems((currentPage-1)*10)
   }, [currentPage, getItems])
 
-  const BASE_URL = 'http://localhost:3000/api/items'
-
-  //Fetch items
-  const fetchItems = async() => {
-    const response = await fetch(BASE_URL)
-    const data = await response.json()
-
-    return data
-  }
-
-  //Add item
-  const addItem = async (item) => {
-    await fetch (BASE_URL, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-
-      body: JSON.stringify(item)
-    })
+  //API call handlers
+  const addItemHandler = async (item) => {
+    await addItem(item)
     setShowSuccessModal(true)
   }
 
-  //Delete item
-  const deleteItem = async (id) => {
-    await fetch(BASE_URL + '/' + id, {
-      method: 'DELETE'
-    })
-    getItems((currentPage-1)*10)
+  const deleteItemHandler = async (id) => {
+    await deleteItem(id)
+    getItems()
   }
 
-  //Edit item
-  const editItem = async (item, id) => {
-    console.log(id, 'rawr', item, item._id)
-    await fetch (BASE_URL + '/' + id, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(item)
-    })
-    getItems((currentPage-1)*10)
+  const editItemHandler = async (item, id) => {
+    await editItem(item, id)
+    getItems()
   }
 
   //Search item
@@ -126,7 +100,7 @@ const App = () => {
   return (
     <>
       <Navbar
-        onAdd={addItem}
+        onAdd={addItemHandler}
         searchItem={searchFunction}
         onFilter={filterItems}
         onExport={exporData}
@@ -135,11 +109,11 @@ const App = () => {
         showSuccessModal={showSuccessModal}
         closeModal={handleCloseSuccess}
       />
-      {items.length >0 ? (
+      {items.length > 0 ? (
       <ItemContainer
         items={items}
-        onDelete={deleteItem}
-        onEdit={editItem}
+        onDelete={deleteItemHandler}
+        onEdit={editItemHandler}
         itemsCount={itemsCount}
         currentPage={currentPage}
         changePage={setCurrentPage}
