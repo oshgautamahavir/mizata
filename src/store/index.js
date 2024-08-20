@@ -20,22 +20,22 @@ const addItem = async (item) => {
     })
 }
 
-  //Delete item
-  const deleteItem = async (id) => {
+//Delete item
+const deleteItem = async (id) => {
     await fetch(BASE_URL + '/' + id, {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-  }
+}
 
-  //Edit item
-  const editItem = async (item, id) => {
+//Edit item
+const editItem = async (item, id) => {
     await fetch (BASE_URL + '/' + id, {
-      method: 'PUT',
-      headers: {
+        method: 'PUT',
+        headers: {
         'Content-type': 'application/json',
-      },
-      body: JSON.stringify(item)
+        },
+        body: JSON.stringify(item)
     })
-  }
+}
 
 export { fetchItems, addItem, deleteItem, editItem }
