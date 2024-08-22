@@ -15,37 +15,25 @@ const App = () => {
   const [filterDate, setFilterDate] = useState("")
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const getItems = useCallback(async(top=0) => {
-    const itemsFromServer = await fetchItems()
-    let filteredItems = itemsFromServer
-    if (filterDate !== '') {
-      filteredItems = filteredItems.filter((item) =>
-        item.date_added.substring(0,10) === filterDate.substring(0,10)
-      )
-    }
-
-    if (searchKey !== '') {
-      filteredItems = filteredItems.filter((item) => item.name.includes(searchKey))
-    }
-
-    setItems(filteredItems.reverse().slice(top, top+10))
-    setItemsCount(filteredItems.length)
+  const fetchItemsHandler = useCallback(async(top=0) => {
+    const itemsFromServer = await fetchItems(searchKey)
+    setItems(itemsFromServer)
   }, [searchKey, filterDate])
 
   useEffect(() => {
-    getItems()
-  }, [getItems])
+    fetchItemsHandler()
+  }, [fetchItemsHandler])
 
   useEffect(() => {
     if (searchKey === '') {
       setCurrentPage(1)
     }
-    getItems();
-  }, [searchKey, getItems])
+    fetchItemsHandler();
+  }, [searchKey, fetchItemsHandler])
 
   useEffect(() => {
-    getItems((currentPage-1)*10)
-  }, [currentPage, getItems])
+    fetchItemsHandler((currentPage-1)*10)
+  }, [currentPage, fetchItemsHandler])
 
   //API call handlers
   const addItemHandler = async (item) => {
@@ -55,12 +43,12 @@ const App = () => {
 
   const deleteItemHandler = async (id) => {
     await deleteItem(id)
-    getItems()
+    fetchItemsHandler()
   }
 
   const editItemHandler = async (item, id) => {
     await editItem(item, id)
-    getItems()
+    fetchItemsHandler()
   }
 
   //Search item
@@ -93,7 +81,7 @@ const App = () => {
     if (currentPage !== 1) {
       setCurrentPage(1)
     } else {
-      getItems()
+      fetchItemsHandler()
     }
   }
 
