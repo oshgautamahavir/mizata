@@ -22,14 +22,14 @@ const addItem = async (item) => {
 
 //Delete item
 const deleteItem = async (id) => {
-    await fetch(BASE_URL + '/' + id, {
+    await fetch(`${BASE_URL}/${id}`, {
         method: 'DELETE'
     })
 }
 
 //Edit item
 const editItem = async (item, id) => {
-    await fetch (BASE_URL + '/' + id, {
+    await fetch (`${BASE_URL}/${id}`, {
         method: 'PUT',
         headers: {
         'Content-type': 'application/json',
