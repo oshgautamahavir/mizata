@@ -15,27 +15,14 @@ const App = () => {
   const [filterDate, setFilterDate] = useState("")
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
+  //API call handlers
   const fetchItemsHandler = useCallback(async(top=0) => {
-    const itemsFromServer = await fetchItems(searchKey)
-    setItems(itemsFromServer)
+    const itemsFromServer = await fetchItems(searchKey, top)
+    console.log(itemsFromServer)
+    setItems(itemsFromServer.items)
+    setItemsCount(itemsFromServer.count)
   }, [searchKey, filterDate])
 
-  useEffect(() => {
-    fetchItemsHandler()
-  }, [fetchItemsHandler])
-
-  useEffect(() => {
-    if (searchKey === '') {
-      setCurrentPage(1)
-    }
-    fetchItemsHandler();
-  }, [searchKey, fetchItemsHandler])
-
-  useEffect(() => {
-    fetchItemsHandler((currentPage-1)*10)
-  }, [currentPage, fetchItemsHandler])
-
-  //API call handlers
   const addItemHandler = async (item) => {
     await addItem(item)
     setShowSuccessModal(true)
@@ -84,6 +71,17 @@ const App = () => {
       fetchItemsHandler()
     }
   }
+
+  useEffect(() => {
+    if (searchKey === '') {
+      setCurrentPage(1)
+    }
+    fetchItemsHandler();
+  }, [searchKey, fetchItemsHandler])
+
+  useEffect(() => {
+    fetchItemsHandler((currentPage-1)*10)
+  }, [currentPage, fetchItemsHandler])
 
   return (
     <>
