@@ -17,8 +17,7 @@ const App = () => {
 
   //API call handlers
   const fetchItemsHandler = useCallback(async(top=0) => {
-    const itemsFromServer = await fetchItems(searchKey, top)
-    console.log(itemsFromServer)
+    const itemsFromServer = await fetchItems(searchKey, top, filterDate)
     setItems(itemsFromServer.items)
     setItemsCount(itemsFromServer.count)
   }, [searchKey, filterDate])
@@ -82,6 +81,11 @@ const App = () => {
   useEffect(() => {
     fetchItemsHandler((currentPage-1)*10)
   }, [currentPage, fetchItemsHandler])
+
+  useEffect(() => {
+    setCurrentPage(1)
+    fetchItemsHandler()
+  }, [fetchItemsHandler])
 
   return (
     <>
