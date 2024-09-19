@@ -1,0 +1,10 @@
+nav {
+    height: 50px;
+    width: 100%;
+    background-image: linear-gradient(to right, #99996A, #ECEB68);
+}
+
+img {
+    height: 30px;
+    width: 60px;
+}

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 
 import ItemContainer from "./components/Item/ItemContainer";
 import EmptyState from "./components/Item/EmptyState";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar2";
 import SuccessModal from "./components/Modals/SuccessModal";
 
 import { fetchItems, addItem, deleteItem, editItem } from "./store/index";
