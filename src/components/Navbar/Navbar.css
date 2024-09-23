@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 nav {
     height: 50px;
     width: 100%;
@@ -8,6 +10,10 @@ nav {
 
 .logo {
     display: flex;
+    font-family: Lobster Two;
+    font-size: 40px;
+    color: white;
+    margin-left: 12px;
 }
 
 img {
@@ -24,4 +30,5 @@ img {
     text-decoration: none;
     display: inline-block;
     margin: 8px;
+    line-height: 0px;
 }
