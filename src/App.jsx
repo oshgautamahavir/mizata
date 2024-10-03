@@ -89,15 +89,17 @@ const App = () => {
   }, [fetchItemsHandler])
 
   return (
-    <>
+    <div className="app-container">
       <Navbar
         onAdd={addItemHandler}
         searchItem={searchFunction}
         onFilter={filterItems}
         onExport={exporData}
       />
-      <Sidebar/>
-      <SuccessModal
+      <div className="content-container">
+        <Sidebar/>
+      </div>
+      {/* <SuccessModal
         showSuccessModal={showSuccessModal}
         closeModal={handleCloseSuccess}
       />
@@ -111,8 +113,8 @@ const App = () => {
         changePage={setCurrentPage}
       />) : (
         <EmptyState searchKey={searchKey}/>
-      )}
-    </>
+      )} */}
+    </div>
   );
 };
 

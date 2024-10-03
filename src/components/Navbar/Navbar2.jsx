@@ -6,12 +6,12 @@ import logo from './mizata-logo.png';
 
 const Navbar = ({}) => {
   return (
-    <nav>
-      <div class="logo">
+    <nav className="navbar">
+      <div className="logo">
         <img src={logo} alt="oten" />
         <p> izata Corp.</p>
       </div>
-      <button class="button"> +New item </button>
+      <button className="button"> +New item </button>
     </nav>
   );
 };

@@ -1,6 +1,8 @@
+import './Sidebar.css';
+
 const Sidebar = ({}) => {
     return (
-      <nav>oten</nav>
+      <nav className="sidebar">oten</nav>
     );
 };
 

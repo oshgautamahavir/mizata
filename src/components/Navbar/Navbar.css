@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-nav {
+.navbar {
     height: 50px;
     width: 100%;
     background-image: linear-gradient(to right, #99996A, #ECEB68);
@@ -17,7 +17,7 @@ nav {
 }
 
 img {
-    height: 30px;
+    height: 50px;
     width: 60px;
 }
 
