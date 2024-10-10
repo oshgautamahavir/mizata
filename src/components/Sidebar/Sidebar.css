@@ -21,11 +21,7 @@
         margin-top: 8px;
 
         svg {
-            margin-right: 8px;
             transition: 0.3s;
-        }
-
-        img {
             width: 36px;
             height: 36px;
         }
@@ -36,10 +32,6 @@
         opacity: 1;
 
         svg {
-            fill: white;
-        }
-
-        img {
             fill: white;
         }
     }
