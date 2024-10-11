@@ -19,11 +19,18 @@
         transition: 0.3s;
         cursor: pointer;
         margin-top: 8px;
+        border-radius: 4px;
 
         svg {
             transition: 0.3s;
             width: 36px;
             height: 36px;
+        }
+
+        .icons {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5;
         }
     }
 
@@ -33,6 +40,11 @@
 
         svg {
             fill: white;
+        }
+
+        .icons {
+            fill: gray;
+            stroke: white;
         }
     }
 }
