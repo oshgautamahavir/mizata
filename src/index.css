@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply max-w-screen-xl mx-auto;
-}
 
 .pagination > li {
   @apply px-3 py-2 rounded;
