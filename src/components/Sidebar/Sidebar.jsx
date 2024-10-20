@@ -11,21 +11,27 @@ const Sidebar = ({}) => {
       <nav className="sidebar">
         <button>
           <DashboardIcon />
+          Dashboard
         </button>
         <button>
           <SalesIcon />
+          Sales
         </button>
         <button>
           <SuppliersIcon />
+          Suppliers
         </button>
         <button>
           <InventoryIcon />
+          Inventory
         </button>
         <button>
           <ReportsIcon />
+          Reports
         </button>
         <button>
           <ManageIcon />
+          Manage
         </button>
       </nav>
     );
