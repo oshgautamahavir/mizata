@@ -32,6 +32,17 @@ const InventoryPage = ({}) => {
               Cancelled
             </div>
           </div>
+          <div className='inventory'>
+            <div className='header'>
+              <div>
+                Show 50 entries
+              </div>
+              <div className='search-container'>
+                Search:
+                <input type='text' className='search-box' />
+              </div>
+            </div>
+          </div>
       </>
     );
   };
