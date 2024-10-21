@@ -12,3 +12,16 @@
         padding-left: 8px;
     }
 }
+
+.tabs {
+    display: flex;
+    margin-top: 36px;
+
+    .tab {
+        display: flex;
+        border: 1px solid;
+        width: 15%;
+        height: 36px;
+        padding: 4px 4px;
+    }
+}
