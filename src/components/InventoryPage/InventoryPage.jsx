@@ -42,6 +42,15 @@ const InventoryPage = ({}) => {
                 <input type='text' className='search-box' />
               </div>
             </div>
+            <div className='inventory-table'>
+              <div className='column-names'>
+                <p>Items</p>
+                <p>Quantity</p>
+                <p>Date</p>
+                <p>Price</p>
+                <p>Status</p>
+              </div>
+            </div>
           </div>
       </>
     );

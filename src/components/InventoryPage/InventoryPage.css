@@ -58,5 +58,11 @@
                 height: 36px;
             }
         }
+
+        .inventory-table {
+            .column-names {
+                display: flex;
+            }
+        }
     }
 }
