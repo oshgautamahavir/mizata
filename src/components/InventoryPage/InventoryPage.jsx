@@ -34,8 +34,8 @@ const InventoryPage = ({}) => {
           </div>
           <div className='inventory'>
             <div className='header'>
-              <div>
-                Show 50 entries
+              <div className='show-entries'>
+                Show <input type='number' className='input-number' /> entries
               </div>
               <div className='search-container'>
                 Search:
