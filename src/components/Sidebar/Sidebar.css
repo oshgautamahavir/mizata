@@ -38,6 +38,7 @@
     button:hover {
         background-color: gray;
         opacity: 1;
+        color: white;
 
         svg {
             fill: white;

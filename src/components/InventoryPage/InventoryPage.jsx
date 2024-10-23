@@ -4,6 +4,7 @@ import ListIcon from './ListIcon';
 import CheckIcon from './CheckIcon';
 import PaperIcon from './PaperIcon';
 import WrongIcon from './WrongIcon';
+import Item from './Item2';
 
 const InventoryPage = ({}) => {
     return (
@@ -50,6 +51,17 @@ const InventoryPage = ({}) => {
                 <p>Price</p>
                 <p>Status</p>
               </div>
+              <Item />
+              <Item />
+              <Item />
+              <Item />
+              <Item />
+              <Item />
+              <Item />
+              <Item />
+              <Item />
+              <Item />
+              <Item />
             </div>
           </div>
       </>
