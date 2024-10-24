@@ -51,17 +51,22 @@ const InventoryPage = ({}) => {
                 <p>Price</p>
                 <p>Status</p>
               </div>
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
+              <div className='inventory-items'>
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+              </div>
             </div>
           </div>
       </>

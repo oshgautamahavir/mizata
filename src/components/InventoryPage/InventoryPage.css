@@ -61,6 +61,7 @@
     }
 
     .inventory-table {
+        height: 75%;
         .column-names {
             display: flex;
             justify-content: space-between;
@@ -72,6 +73,12 @@
                 width: 50%;
                 text-align: center;
             }
+        }
+
+        .inventory-items {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 90%;
         }
     }
 }
