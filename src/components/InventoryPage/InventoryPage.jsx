@@ -6,6 +6,9 @@ import PaperIcon from './PaperIcon';
 import WrongIcon from './WrongIcon';
 import Item from './Item2';
 
+import { fetchItems } from "../../store/index";
+
+
 const InventoryPage = ({}) => {
     return (
       <>

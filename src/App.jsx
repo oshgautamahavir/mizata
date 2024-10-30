@@ -21,7 +21,7 @@ const App = () => {
 
   //API call handlers
   const fetchItemsHandler = useCallback(async(top=0) => {
-    const itemsFromServer = await fetchItems(searchKey, top, filterDate)
+    const itemsFromServer = await fetchItems(searchKey, filterDate)
     setItems(itemsFromServer.items)
     setItemsCount(itemsFromServer.count)
   }, [searchKey, filterDate])
