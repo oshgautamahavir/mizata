@@ -1,8 +1,8 @@
 const BASE_URL = 'http://localhost:3000/api/items'
 
 //Fetch items
-const fetchItems = async(searchKey, top, date) => {
-    const response = await fetch(`${BASE_URL}?search=${searchKey}&top=${top}&date=${date}`)
+const fetchItems = async(searchKey) => {
+    const response = await fetch(`${BASE_URL}?search=${searchKey}`)
     const data = await response.json()
 
     return data
