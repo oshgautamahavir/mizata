@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import './InventoryPage.css';
 
@@ -73,20 +73,12 @@ const InventoryPage = ({}) => {
               <p>Status</p>
             </div>
             <div className='inventory-items'>
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
+              {items.map((item) => (
+                <Item
+                  key={item._id}
+                  item={item}
+                />
+              ))}
             </div>
           </div>
         </div>

@@ -1,16 +1,28 @@
+import PropTypes from 'prop-types'
+
 import './Item.css'
 
-const Item = ({}) => {
+function getFormattedDate(dateString) {
+  const date = new Date(dateString)
 
+  return date.toLocaleDateString(
+    'en-us', { year:"numeric", month:"long", day:"numeric"})
+}
+
+const Item = ({ item }) => {
   return (
     <div className="item">
-      <p> Hammer </p>
-      <p> 10 </p>
-      <p> September 30, 2024 </p>
-      <p> PHP 12,000</p>
-      <p> In use</p>
+      <p> { item.name } </p>
+      <p> { item.quantity } </p>
+      <p> { getFormattedDate(item.createdAt) } </p>
+      <p> { item.price } </p>
+      <p> { item.status === 0 ? 'In use' : 'Returned' } </p>
     </div>
   );
 };
+
+Item.propTypes = {
+  item: PropTypes.object,
+}
 
 export default Item;
