@@ -62,11 +62,12 @@
 
     .inventory-table {
         height: 75%;
+        margin-left: 24px;
+
         .column-names {
             display: flex;
             justify-content: space-between;
             width: 90%;
-            margin-left: 24px;
 
             p {
                 border: 1px solid;
@@ -79,7 +80,7 @@
             overflow-y: auto;
             overflow-x: hidden;
             height: 90%;
-            width: 93%;
+            width: 90%;
         }
     }
 }
