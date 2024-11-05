@@ -9,9 +9,9 @@ function getFormattedDate(dateString) {
     'en-us', { year:"numeric", month:"long", day:"numeric"})
 }
 
-const Item = ({ item }) => {
+const Item = ({ item, onClick }) => {
   return (
-    <div className="item">
+    <div className="item" onClick={onClick}>
       <p> { item.name } </p>
       <p> { item.quantity } </p>
       <p> { getFormattedDate(item.createdAt) } </p>

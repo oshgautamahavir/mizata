@@ -9,6 +9,7 @@ import PaperIcon from './PaperIcon';
 import WrongIcon from './WrongIcon';
 
 import Item from './Item2';
+import ViewItemModal from "../Modals/ViewItemModal2";
 
 import { fetchItems } from "../../store/index";
 
@@ -17,6 +18,13 @@ const InventoryPage = ({}) => {
   const [itemsCount, setItemsCount] = useState(0)
   const [searchKey, setSearchKey] = useState("")
   const [filterDate, setFilterDate] = useState("")
+  const [showViewModal, setShowViewModal] = useState(false);
+  const [id, setId] = useState(0);
+
+  const toggleViewModal = (id) => {
+    setShowViewModal(!showViewModal);
+    setId(id)
+  };
 
   //Fetch items handler
   useEffect(() => {
@@ -30,58 +38,64 @@ const InventoryPage = ({}) => {
 
   return (
     <>
-        <div className='title'>
-          <InventoryIcon />
-          <p>
-              Inventory
-          </p>
-        </div>
-        <div className='tabs'>
-          <div className='tab'>
-            <ListIcon />
+      <div className='title'>
+        <InventoryIcon />
+        <p>
             Inventory
+        </p>
+      </div>
+      <div className='tabs'>
+        <div className='tab'>
+          <ListIcon />
+          Inventory
+        </div>
+        <div className='tab'>
+          <CheckIcon />
+          Executed
+        </div>
+        <div className='tab'>
+          <PaperIcon />
+          Draft
+        </div>
+        <div className='tab'>
+          <WrongIcon />
+          Cancelled
+        </div>
+      </div>
+      <div className='inventory'>
+        <div className='header'>
+          <div className='show-entries'>
+            Show <input type='number' className='input-number' /> entries
           </div>
-          <div className='tab'>
-            <CheckIcon />
-            Executed
-          </div>
-          <div className='tab'>
-            <PaperIcon />
-            Draft
-          </div>
-          <div className='tab'>
-            <WrongIcon />
-            Cancelled
+          <div className='search-container'>
+            Search:
+            <input type='text' className='search-box' />
           </div>
         </div>
-        <div className='inventory'>
-          <div className='header'>
-            <div className='show-entries'>
-              Show <input type='number' className='input-number' /> entries
-            </div>
-            <div className='search-container'>
-              Search:
-              <input type='text' className='search-box' />
-            </div>
+        <div className='inventory-table'>
+          <div className='column-names'>
+            <p>Items</p>
+            <p>Quantity</p>
+            <p>Date</p>
+            <p>Price</p>
+            <p>Status</p>
           </div>
-          <div className='inventory-table'>
-            <div className='column-names'>
-              <p>Items</p>
-              <p>Quantity</p>
-              <p>Date</p>
-              <p>Price</p>
-              <p>Status</p>
-            </div>
-            <div className='inventory-items'>
-              {items.map((item) => (
-                <Item
-                  key={item._id}
-                  item={item}
-                />
-              ))}
-            </div>
+          <div className='inventory-items'>
+            {items.map((item) => (
+              <Item
+                key={item._id}
+                item={item}
+                onClick={() => toggleViewModal(item._id)}
+              />
+            ))}
           </div>
         </div>
+      </div>
+      <ViewItemModal
+        showViewModal={showViewModal}
+        itemId={id}
+        onClose={toggleViewModal}
+      />
     </>
   );
 };
