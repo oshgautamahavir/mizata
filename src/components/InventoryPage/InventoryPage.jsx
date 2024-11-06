@@ -21,10 +21,14 @@ const InventoryPage = ({}) => {
   const [showViewModal, setShowViewModal] = useState(false);
   const [id, setId] = useState(0);
 
-  const toggleViewModal = (id) => {
+  const toggleViewModal = () => {
     setShowViewModal(!showViewModal);
-    setId(id)
   };
+
+  const setIdHandler = (id) => {
+    setId(id);
+    toggleViewModal();
+  }
 
   //Fetch items handler
   useEffect(() => {
@@ -85,7 +89,7 @@ const InventoryPage = ({}) => {
               <Item
                 key={item._id}
                 item={item}
-                onClick={() => toggleViewModal(item._id)}
+                onClick={() => setIdHandler(item._id)}
               />
             ))}
           </div>

@@ -1,30 +1,47 @@
 import { useState, useEffect } from "react";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+
+import './ViewItemModal.css';
 
 
-const ViewItemModal = ({ showViewModal, onClose, item }) => {
+const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
   if (!showViewModal) {
     return null;
   }
 
-  const toggleConfirmEditModal = () => {
-    setShowConfirmEditModal(!showConfirmEditModal)
-  }
-
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <div>
-          rawr
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="details">
+          <div>
+            <p> Item: </p>
+            <p> Description: </p>
+            <p> Added on: </p>
+            <p> Price: </p>
+            <p> Quantity: </p>
+            <p> Total Price: </p>
+            <p> Status: </p>
+          </div>
+          <div>
+            <p> Hammer </p>
+            <p> What a hammer </p>
+            <p> November 6, 2024 </p>
+            <p> PHP 300: </p>
+            <p> 4 </p>
+            <p> PHP 1200 </p>
+            <p> In use </p>
+          </div>
         </div>
-      </div>
+        <button> Delete </button>
+        <button> Edit </button>
+          </div>
     </div>
   );
 };
 
 ViewItemModal.propTypes = {
   showViewModal: PropTypes.bool,
-  item: PropTypes.object,
+  itemId: PropTypes.number,
   onClose: PropTypes.func,
 }
 
