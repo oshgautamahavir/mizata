@@ -32,16 +32,18 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
             <p> In use </p>
           </div>
         </div>
-        <button> Delete </button>
-        <button> Edit </button>
-          </div>
+        <div className="buttons-container">
+          <button className="delete-button"> Delete </button>
+          <button> Edit </button>
+        </div>
+      </div>
     </div>
   );
 };
 
 ViewItemModal.propTypes = {
   showViewModal: PropTypes.bool,
-  itemId: PropTypes.number,
+  itemId: PropTypes.string,
   onClose: PropTypes.func,
 }
 

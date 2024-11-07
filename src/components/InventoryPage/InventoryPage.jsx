@@ -19,7 +19,7 @@ const InventoryPage = ({}) => {
   const [searchKey, setSearchKey] = useState("")
   const [filterDate, setFilterDate] = useState("")
   const [showViewModal, setShowViewModal] = useState(false);
-  const [id, setId] = useState(0);
+  const [id, setId] = useState('');
 
   const toggleViewModal = () => {
     setShowViewModal(!showViewModal);

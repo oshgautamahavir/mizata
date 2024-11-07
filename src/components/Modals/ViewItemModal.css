@@ -6,3 +6,34 @@
         margin: 4px 0px;
     }
 }
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    button {
+        border: 1px solid black;
+        width: 80px;
+        height: 30px;
+        border-radius: 4px;
+    }
+
+    .delete-button {
+        background-color: red;
+        border: none;
+        color: white;
+    }
+
+    button:hover {
+        background-color: darkgray;
+        opacity: 1;
+        color: white;
+        border: none;
+    }
+
+    .delete-button:hover {
+        background-color: rgba(255, 0, 0, 0.544);
+        opacity: 1;
+    }
+}
