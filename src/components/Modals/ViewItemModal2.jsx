@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './ViewItemModal.css';
 
+import CloseButtonIcon from './CloseButtonIcon';
 
 const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
   if (!showViewModal) {
@@ -12,6 +13,9 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="close-button">
+          <CloseButtonIcon />
+        </div>
         <div className="details">
           <div>
             <p> Item: </p>
@@ -29,7 +33,7 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
             <p> PHP 300: </p>
             <p> 4 </p>
             <p> PHP 1200 </p>
-            <p> In use </p>
+            <p> <div className="status-circle" /> In use </p>
           </div>
         </div>
         <div className="buttons-container">

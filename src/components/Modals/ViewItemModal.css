@@ -1,9 +1,28 @@
+.close-button {
+    display: flex;
+    justify-content: flex-end;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
 .details {
     display: flex;
     gap: 40px;
 
     p {
         margin: 4px 0px;
+    }
+
+    .status-circle {
+        height: 12px;
+        width: 12px;
+        background-color: green;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 4px;
     }
 }
 
