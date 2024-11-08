@@ -13,7 +13,7 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="close-button">
+        <div className="close-button" onClick={onClose}>
           <CloseButtonIcon />
         </div>
         <div className="details">
@@ -27,10 +27,10 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
             <p> Status: </p>
           </div>
           <div>
-            <p> Hammer </p>
+            <p><b> Hammer </b></p>
             <p> What a hammer </p>
             <p> November 6, 2024 </p>
-            <p> PHP 300: </p>
+            <p> PHP 300 </p>
             <p> 4 </p>
             <p> PHP 1200 </p>
             <p> <div className="status-circle" /> In use </p>
