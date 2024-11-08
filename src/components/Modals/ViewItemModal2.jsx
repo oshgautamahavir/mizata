@@ -5,12 +5,28 @@ import './ViewItemModal.css';
 
 import CloseButtonIcon from './CloseButtonIcon';
 
-const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
-  if (!showViewModal) {
-    return null;
-  }
+import { getItem } from "../../store/index";
 
-  return (
+function getFormattedDate(dateString) {
+  const date = new Date(dateString)
+
+  return date.toLocaleDateString(
+    'en-us', { year:"numeric", month:"long", day:"numeric"})
+}
+
+const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
+  const [item, setItem] = useState({})
+
+  // Get the details of the item
+  useEffect(() => {
+    const getItemHandler = async () => {
+      const item = await getItem(itemId);
+      setItem(item);
+    };
+    getItemHandler();
+  });
+
+  return showViewModal ? (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="close-button" onClick={onClose}>
@@ -27,12 +43,12 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
             <p> Status: </p>
           </div>
           <div>
-            <p><b> Hammer </b></p>
+            <p><b> {item.name} </b></p>
             <p> What a hammer </p>
-            <p> November 6, 2024 </p>
-            <p> PHP 300 </p>
-            <p> 4 </p>
-            <p> PHP 1200 </p>
+            <p> {getFormattedDate(item.createdAt)} </p>
+            <p> PHP {item.price} </p>
+            <p> {item.quantity} </p>
+            <p> PHP {item.price * item.quantity} </p>
             <p> <div className="status-circle" /> In use </p>
           </div>
         </div>
@@ -42,7 +58,7 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 ViewItemModal.propTypes = {

@@ -1,6 +1,6 @@
 const BASE_URL = 'http://localhost:3000/api/items'
 
-//Fetch items
+// Fetch items
 const fetchItems = async(searchKey) => {
     const response = await fetch(`${BASE_URL}?search=${searchKey}`)
     const data = await response.json()
@@ -8,7 +8,7 @@ const fetchItems = async(searchKey) => {
     return data
 }
 
-//Add item
+// Add item
 const addItem = async (item) => {
     await fetch (BASE_URL, {
       method: 'POST',
@@ -20,14 +20,14 @@ const addItem = async (item) => {
     })
 }
 
-//Delete item
+// Delete item
 const deleteItem = async (id) => {
     await fetch(`${BASE_URL}/${id}`, {
         method: 'DELETE'
     })
 }
 
-//Edit item
+// Edit item
 const editItem = async (item, id) => {
     await fetch (`${BASE_URL}/${id}`, {
         method: 'PUT',
@@ -38,4 +38,12 @@ const editItem = async (item, id) => {
     })
 }
 
-export { fetchItems, addItem, deleteItem, editItem }
+// Get single item
+const getItem = async(id) => {
+    const response = await fetch(`${BASE_URL}/${id}`)
+    const data = await response.json()
+
+    return data
+}
+
+export { fetchItems, addItem, deleteItem, editItem, getItem }
