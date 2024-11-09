@@ -19,12 +19,14 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
 
   // Get the details of the item
   useEffect(() => {
-    const getItemHandler = async () => {
-      const item = await getItem(itemId);
-      setItem(item);
-    };
-    getItemHandler();
-  });
+    if (showViewModal) {
+      const getItemHandler = async () => {
+        const item = await getItem(itemId);
+        setItem(item);
+      };
+      getItemHandler();
+    }
+  }, []);
 
   return showViewModal ? (
     <div className="modal-overlay" onClick={onClose}>
@@ -49,7 +51,10 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
             <p> PHP {item.price} </p>
             <p> {item.quantity} </p>
             <p> PHP {item.price * item.quantity} </p>
-            <p> <div className="status-circle" /> In use </p>
+            <p className="status">
+              <p className={"status-circle " + (item.status ? 'orange' : 'green')} />
+              {item.status ? 'Stocked' : 'In use'}
+            </p>
           </div>
         </div>
         <div className="buttons-container">

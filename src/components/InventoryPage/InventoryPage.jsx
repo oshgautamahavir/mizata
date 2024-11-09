@@ -95,11 +95,12 @@ const InventoryPage = ({}) => {
           </div>
         </div>
       </div>
+      {showViewModal ? (
       <ViewItemModal
         showViewModal={showViewModal}
         itemId={id}
         onClose={toggleViewModal}
-      />
+      />) : null}
     </>
   );
 };
