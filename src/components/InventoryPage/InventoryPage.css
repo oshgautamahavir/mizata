@@ -28,7 +28,7 @@
 
 .inventory {
     border: 1px solid;
-    height: 500px;
+    height: 420px;
 
     .header {
         display: flex;
