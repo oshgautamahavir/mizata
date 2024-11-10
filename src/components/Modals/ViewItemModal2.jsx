@@ -51,10 +51,10 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
             <p> PHP {item.price} </p>
             <p> {item.quantity} </p>
             <p> PHP {item.price * item.quantity} </p>
-            <p className="status">
-              <p className={"status-circle " + (item.status ? 'orange' : 'green')} />
+            <div className="status">
+              <div className={"status-circle " + (item.status ? 'orange' : 'green')} />
               {item.status ? 'Stocked' : 'In use'}
-            </p>
+            </div>
           </div>
         </div>
         <div className="buttons-container">

@@ -10,6 +10,7 @@ import WrongIcon from './WrongIcon';
 
 import Item from './Item2';
 import ViewItemModal from "../Modals/ViewItemModal2";
+import CreateItemModal from "../Modals/CreateItemModal2";
 
 import { fetchItems } from "../../store/index";
 
@@ -19,10 +20,15 @@ const InventoryPage = ({}) => {
   const [searchKey, setSearchKey] = useState("")
   const [filterDate, setFilterDate] = useState("")
   const [showViewModal, setShowViewModal] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
   const [id, setId] = useState('');
 
   const toggleViewModal = () => {
     setShowViewModal(!showViewModal);
+  };
+
+  const toggleCreateModal = () => {
+    setShowCreateModal(!showCreateModal);
   };
 
   const setIdHandler = (id) => {
@@ -68,12 +74,15 @@ const InventoryPage = ({}) => {
       </div>
       <div className='inventory'>
         <div className='header'>
-          <div className='show-entries'>
-            Show <input type='number' className='input-number' /> entries
-          </div>
           <div className='search-container'>
             Search:
             <input type='text' className='search-box' />
+          </div>
+          <div className='show-entries'>
+            Show <input type='number' className='input-number' /> entries
+          </div>
+          <div className='create-button'>
+            <button className="button" onClick={toggleCreateModal}> + New item </button>
           </div>
         </div>
         <div className='inventory-table'>
@@ -100,6 +109,11 @@ const InventoryPage = ({}) => {
         showViewModal={showViewModal}
         itemId={id}
         onClose={toggleViewModal}
+      />) : null}
+      {showCreateModal ? (
+      <CreateItemModal
+        showCreateModal={showCreateModal}
+        onClose={toggleCreateModal}
       />) : null}
     </>
   );

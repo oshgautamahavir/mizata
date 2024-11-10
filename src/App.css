@@ -7,7 +7,7 @@
     display: flex;
 
     .main-content {
-      margin-left: 100px; /* Adjust according to the sidebar width */
+      margin-left: 100px;
       padding: 20px;
       flex-grow: 1;
     }

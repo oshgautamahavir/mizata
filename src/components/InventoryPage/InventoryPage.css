@@ -2,85 +2,100 @@
     display: flex;
     font-size: 24px;
     width: 30%;
+}
 
-    svg {
-        width: 36px;
-        height: 36px;
-    }
+.title svg {
+    width: 36px;
+    height: 36px;
+}
 
-    p {
-        padding-left: 8px;
-    }
+.title p {
+    padding-left: 8px;;
 }
 
 .tabs {
     display: flex;
     margin-top: 36px;
+}
 
-    .tab {
-        display: flex;
-        border: 1px solid;
-        width: 15%;
-        height: 36px;
-        padding: 4px 16px;
-    }
+.tab {
+    display: flex;
+    border: 1px solid;
+    width: 15%;
+    height: 36px;
+    padding: 4px 16px;
 }
 
 .inventory {
     border: 1px solid;
     height: 420px;
+}
 
-    .header {
-        display: flex;
-        justify-content: space-between;
-        margin: 24px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px;
+}
 
-        .show-entries {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            .input-number {
-                border: 1px solid;
-                width: 20%;
-                padding: 0px 4px;
-            }
-        }
+.header button {
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: green;
+    color: white;
+}
 
-        .search-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+.header button:hover {
+    color: white;
+    background-color: lightgreen;
+}
 
-            .search-box {
-                border: 1px solid;
-                width: 200px;
-                height: 36px;
-            }
-        }
-    }
+.show-entries {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-    .inventory-table {
-        height: 75%;
-        margin-left: 24px;
+.input-number {
+    border: 1px solid;
+    width: 20%;
+    padding: 0px 4px;
+}
 
-        .column-names {
-            display: flex;
-            justify-content: space-between;
-            width: 90%;
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
 
-            p {
-                border: 1px solid;
-                width: 50%;
-                text-align: center;
-            }
-        }
+.search-box {
+    border: 1px solid;
+    width: 200px;
+    height: 36px;
+}
 
-        .inventory-items {
-            overflow-y: auto;
-            overflow-x: hidden;
-            height: 90%;
-            width: 90%;
-        }
-    }
+.inventory-table {
+    height: 75%;
+    margin-left: 24px;
+
+}
+
+.column-names {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+
+}
+
+.column-names p {
+    border: 1px solid;
+    width: 50%;
+    text-align: center;
+}
+
+.inventory-items {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 90%;
+    width: 90%;
 }

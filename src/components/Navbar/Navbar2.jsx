@@ -11,7 +11,6 @@ const Navbar = ({}) => {
         <img src={logo} alt="oten" />
         <p> izata Corp.</p>
       </div>
-      <button className="button"> +New item </button>
     </nav>
   );
 };
