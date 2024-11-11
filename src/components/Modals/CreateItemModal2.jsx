@@ -1,27 +1,82 @@
 import { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 
-import './ViewItemModal.css';
+import './CreateItemModal.css';
 
 import CloseButtonIcon from './CloseButtonIcon';
 
 const CreateItemModal = ({ showCreateModal, onClose }) => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [errorMessage, setErrorMessage] = useState('');
 
   return showCreateModal ? (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay">
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="close-button" onClick={onClose}>
           <CloseButtonIcon />
         </div>
-        <div className="details">
+        <div className="input-container">
           <div>
             <p> Item: </p>
             <p> Description: </p>
-            <p> Added on: </p>
             <p> Price: </p>
             <p> Quantity: </p>
             <p> Total Price: </p>
             <p> Status: </p>
+          </div>
+          <div className="inputs"> 
+            <input
+              className="create-input"
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              className="create-input"
+              type="text"
+              name="description"
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <input
+              className="create-input number"
+              type="number"
+              name="quantity"
+              id="quantity"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+            <input
+              className="create-input number"
+              type="number"
+              name="price"
+              id="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+            <input
+              className="create-input"
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              className="create-input"
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
         </div>
         <div className="buttons-container">
