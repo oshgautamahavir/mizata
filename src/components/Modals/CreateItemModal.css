@@ -84,15 +84,29 @@
 .inputs {
     display: flex;
     flex-direction: column;
+    max-width: 216px;
 }
 
 .create-input {
     border: 1px solid;
     border-radius: 4px;
     padding-left: 4px;
-    margin-top: 6px;
 }
 
 .number {
     width: 50%;
+    margin-left: 24px;
+}
+
+.inputs div {
+    margin-top: 7px;
+}
+
+.inputs .status-input {
+    display: flex;
+    margin: 0px;
+}
+
+.inputs .status-input div {
+    margin-right: 16px;
 }

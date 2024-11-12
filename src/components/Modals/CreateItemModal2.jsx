@@ -29,54 +29,58 @@ const CreateItemModal = ({ showCreateModal, onClose }) => {
             <p> Status: </p>
           </div>
           <div className="inputs"> 
-            <input
-              className="create-input"
-              type="text"
-              name="name"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              className="create-input"
-              type="text"
-              name="description"
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <input
-              className="create-input number"
-              type="number"
-              name="quantity"
-              id="quantity"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-            />
-            <input
-              className="create-input number"
-              type="number"
-              name="price"
-              id="price"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            />
-            <input
-              className="create-input"
-              type="text"
-              name="name"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              className="create-input"
-              type="text"
-              name="name"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <div>
+              <input
+                className="create-input"
+                type="text"
+                name="name"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                className="create-input"
+                type="text"
+                name="description"
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+            <div>
+              PHP
+              <input
+                className="create-input number"
+                type="number"
+                name="quantity"
+                id="quantity"
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                className="create-input number"
+                type="number"
+                name="price"
+                id="price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </div>
+            <div>
+              PHP 0
+            </div>
+            <div className="status-input">
+              <div>
+                <input type="radio" name="status" /> In use
+              </div>
+              <div>
+                <input type="radio" name="status" /> Stocked
+              </div>
+            </div>
           </div>
         </div>
         <div className="buttons-container">
