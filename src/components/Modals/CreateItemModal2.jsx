@@ -10,7 +10,7 @@ const CreateItemModal = ({ showCreateModal, onClose }) => {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [status, setStatus] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
 
   return showCreateModal ? (
@@ -31,54 +31,50 @@ const CreateItemModal = ({ showCreateModal, onClose }) => {
           <div className="inputs"> 
             <div>
               <input
-                className="create-input"
-                type="text"
-                name="name"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                className="create-input" type="text" name="name" id="name"
+                value={name} onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div>
               <input
-                className="create-input"
-                type="text"
-                name="description"
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                className="create-input" type="text" name="description" id="description"
+                value={description} onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div>
               PHP
               <input
-                className="create-input number"
-                type="number"
-                name="quantity"
-                id="quantity"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
+                className="create-input price" type="number" name="quantity" id="quantity"
+                value={quantity} onChange={(e) => setQuantity(e.target.value)}
               />
             </div>
             <div>
               <input
-                className="create-input number"
-                type="number"
-                name="price"
-                id="price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                className="create-input quantity" type="number" name="price" id="price"
+                value={price} onChange={(e) => setPrice(e.target.value)}
               />
             </div>
             <div>
-              PHP 0
+              PHP {quantity * price}
             </div>
             <div className="status-input">
               <div>
-                <input type="radio" name="status" /> In use
+                <label>
+                  <input
+                    type="radio" name="status" value="0"
+                    onChange={(e) => setStatus(e.target.value)}
+                  />
+                  In use
+                </label>
               </div>
               <div>
-                <input type="radio" name="status" /> Stocked
+                <label>
+                  <input
+                    type="radio" name="status" value="1"
+                    onChange={(e) => setStatus(e.target.value)}
+                  />
+                  Stocked
+                </label>
               </div>
             </div>
           </div>

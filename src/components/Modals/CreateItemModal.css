@@ -93,9 +93,13 @@
     padding-left: 4px;
 }
 
-.number {
+.inputs .price {
     width: 50%;
-    margin-left: 24px;
+    margin-left: 16px;
+}
+
+.inputs .quantity {
+    width: 25%;
 }
 
 .inputs div {
@@ -109,4 +113,8 @@
 
 .inputs .status-input div {
     margin-right: 16px;
+}
+
+.inputs .status-input div input {
+    margin-right: 4px;
 }
