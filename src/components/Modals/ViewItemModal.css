@@ -56,27 +56,27 @@
 
 }
 
-.buttons-container button {
+.view-modal .buttons-container button {
     border: 1px solid black;
     width: 80px;
     height: 30px;
     border-radius: 4px;
 }
 
-.buttons-container .delete-button {
+.view-modal .buttons-container .delete-button {
     background-color: red;
     border: none;
     color: white;
 }
 
-.buttons-container button:hover {
+.view-modal .buttons-container button:hover {
     background-color: darkgray;
     opacity: 1;
     color: white;
     border: none;
 }
 
-.buttons-container .delete-button:hover {
+.view-modal .buttons-container .delete-button:hover {
     background-color: rgba(255, 0, 0, 0.544);
     opacity: 1;
 }

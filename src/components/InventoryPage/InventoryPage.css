@@ -40,13 +40,13 @@
 .header button {
     border: 1px solid;
     border-radius: 4px;
-    background-color: green;
+    background-image: linear-gradient(to right, #99996A, hsl(60, 72%, 67%));
     color: white;
 }
 
 .header button:hover {
     color: white;
-    background-color: lightgreen;
+    background-image: linear-gradient(to right, #99996a7b, hsla(60, 72%, 67%, 0.4));
 }
 
 .show-entries {

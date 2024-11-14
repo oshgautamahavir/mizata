@@ -1,3 +1,7 @@
+.create-modal {
+    height: 360px !important;
+}
+
 .close-button {
     display: flex;
     justify-content: flex-end;
@@ -49,38 +53,6 @@
     background-color: green;
 }
 
-.buttons-container {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-
-}
-
-.buttons-container button {
-    border: 1px solid black;
-    width: 80px;
-    height: 30px;
-    border-radius: 4px;
-}
-
-.buttons-container .delete-button {
-    background-color: red;
-    border: none;
-    color: white;
-}
-
-.buttons-container button:hover {
-    background-color: darkgray;
-    opacity: 1;
-    color: white;
-    border: none;
-}
-
-.buttons-container .delete-button:hover {
-    background-color: rgba(255, 0, 0, 0.544);
-    opacity: 1;
-}
-
 .inputs {
     display: flex;
     flex-direction: column;
@@ -117,4 +89,46 @@
 
 .inputs .status-input div input {
     margin-right: 4px;
+}
+
+.error-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0.14);
+    border-left: 4px solid red;
+    color: red;
+    padding: 8px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+
+}
+
+.buttons-container button {
+    border: 1px solid black;
+    width: 80px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.create-modal .buttons-container .delete-button {
+    background-color: green;
+    border: none;
+    color: white;
+}
+
+.buttons-container button:hover {
+    background-color: darkgray;
+    opacity: 1;
+    color: white;
+    border: none;
+}
+
+.create-modal .buttons-container .delete-button:hover {
+    background-color: lightgreen;
+    opacity: 1;
 }

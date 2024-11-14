@@ -13,11 +13,26 @@ const CreateItemModal = ({ showCreateModal, onClose }) => {
   const [status, setStatus] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const validateForm = () => {
+    if (name === '') {
+      setErrorMessage('Please input item name')
+    } else if (description === '') {
+      setErrorMessage('Please input item description.')
+    } else if (quantity === 0) {
+      setErrorMessage('Please input the quantity of item.')
+    } else if (price === 0) {
+      setErrorMessage('Please input item price.')
+    } else {
+      setErrorMessage('')
+      handleCreateItem()
+    }
+  }
+
   return showCreateModal ? (
     <div className="modal-overlay">
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="close-button" onClick={onClose}>
-          <CloseButtonIcon />
+      <div className="modal-content create-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="close-button">
+          <CloseButtonIcon onClick={onClose}/>
         </div>
         <div className="input-container">
           <div>
@@ -79,9 +94,14 @@ const CreateItemModal = ({ showCreateModal, onClose }) => {
             </div>
           </div>
         </div>
+        {errorMessage && (
+            <div className="error-container" role="alert">
+              {errorMessage}
+            </div>
+          )}
         <div className="buttons-container">
-          <button className="delete-button"> Delete </button>
-          <button> Edit </button>
+          <button onClick={onClose}> Cancel </button>
+          <button className="delete-button" onClick={validateForm}> Create </button>
         </div>
       </div>
     </div>
