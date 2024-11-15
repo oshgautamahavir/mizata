@@ -4,14 +4,22 @@ import PropTypes from 'prop-types';
 import './CreateItemModal.css';
 
 import CloseButtonIcon from './CloseButtonIcon';
+import AlertIcon from './AlertIcon';
 
-const CreateItemModal = ({ showCreateModal, onClose }) => {
+import { addItem } from "../../store/index";
+
+const CreateItemModal = ({ showCreateModal, onClose, refetch }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
   const [status, setStatus] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const handleAddItem = async () => {
+    await addItem({ name, description, quantity, price, status });
+    refetch();
+  };
 
   const validateForm = () => {
     if (name === '') {
@@ -24,7 +32,7 @@ const CreateItemModal = ({ showCreateModal, onClose }) => {
       setErrorMessage('Please input item price.')
     } else {
       setErrorMessage('')
-      handleCreateItem()
+      handleAddItem()
     }
   }
 
@@ -94,11 +102,13 @@ const CreateItemModal = ({ showCreateModal, onClose }) => {
             </div>
           </div>
         </div>
-        {errorMessage && (
-            <div className="error-container" role="alert">
-              {errorMessage}
-            </div>
+        <div className="error-container">
+          {errorMessage && (
+              <div className="error-message" role="alert">
+                <AlertIcon /> {errorMessage}
+              </div>
           )}
+        </div>
         <div className="buttons-container">
           <button onClick={onClose}> Cancel </button>
           <button className="delete-button" onClick={validateForm}> Create </button>
@@ -111,6 +121,7 @@ const CreateItemModal = ({ showCreateModal, onClose }) => {
 CreateItemModal.propTypes = {
   showCreateModal: PropTypes.bool,
   onClose: PropTypes.func,
+  refetch: PropTypes.func
 }
 
 export default CreateItemModal;

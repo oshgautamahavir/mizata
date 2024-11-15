@@ -36,15 +36,22 @@ const InventoryPage = ({}) => {
     toggleViewModal();
   }
 
-  //Fetch items handler
+  // Fetch items handler
+  const fetchItemsHandler = async () => {
+    const itemsFromServer = await fetchItems(searchKey);
+    setItems(itemsFromServer.items);
+    setItemsCount(itemsFromServer.count);
+  };
+
+  // Initial fetch items
   useEffect(() => {
-    const fetchItemsHandler = async () => {
-      const itemsFromServer = await fetchItems(searchKey);
-      setItems(itemsFromServer.items);
-      setItemsCount(itemsFromServer.count);
-    };
     fetchItemsHandler();
   }, [searchKey, filterDate]);
+
+  const refetchHandler = () => {
+    toggleCreateModal();
+    fetchItemsHandler();
+  }
 
   return (
     <>
@@ -114,6 +121,7 @@ const InventoryPage = ({}) => {
       <CreateItemModal
         showCreateModal={showCreateModal}
         onClose={toggleCreateModal}
+        refetch={refetchHandler}
       />) : null}
     </>
   );

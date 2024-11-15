@@ -46,7 +46,7 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
           </div>
           <div>
             <p><b> {item.name} </b></p>
-            <p> What a hammer </p>
+            <p> {item.description} </p>
             <p> {getFormattedDate(item.createdAt)} </p>
             <p> PHP {item.price} </p>
             <p> {item.quantity} </p>

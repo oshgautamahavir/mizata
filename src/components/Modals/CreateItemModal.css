@@ -92,9 +92,22 @@
 }
 
 .error-container {
+    height: 52px;
+}
+
+.error-message svg {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+    stroke: red;
+}
+
+.error-message {
     display: flex;
     align-items: center;
+    width: 90%;
     background-color: rgba(255, 0, 0, 0.14);
+    border-radius: 4px;
     border-left: 4px solid red;
     color: red;
     padding: 8px;
