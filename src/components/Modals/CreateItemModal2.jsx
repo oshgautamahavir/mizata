@@ -8,7 +8,7 @@ import AlertIcon from './AlertIcon';
 
 import { addItem } from "../../store/index";
 
-const CreateItemModal = ({ showCreateModal, onClose, refetch }) => {
+const CreateItemModal = ({ showCreateModal, onClose, onCreate }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(0);
@@ -18,7 +18,7 @@ const CreateItemModal = ({ showCreateModal, onClose, refetch }) => {
 
   const handleAddItem = async () => {
     await addItem({ name, description, quantity, price, status });
-    refetch();
+    onCreate();
   };
 
   const validateForm = () => {
@@ -121,7 +121,7 @@ const CreateItemModal = ({ showCreateModal, onClose, refetch }) => {
 CreateItemModal.propTypes = {
   showCreateModal: PropTypes.bool,
   onClose: PropTypes.func,
-  refetch: PropTypes.func
+  onCreate: PropTypes.func
 }
 
 export default CreateItemModal;

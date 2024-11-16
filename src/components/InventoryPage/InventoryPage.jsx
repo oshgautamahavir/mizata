@@ -48,8 +48,13 @@ const InventoryPage = ({}) => {
     fetchItemsHandler();
   }, [searchKey, filterDate]);
 
-  const refetchHandler = () => {
+  const onCreateHandler = () => {
     toggleCreateModal();
+    fetchItemsHandler();
+  }
+
+  const onDeleteHandler = () => {
+    toggleViewModal();
     fetchItemsHandler();
   }
 
@@ -116,12 +121,13 @@ const InventoryPage = ({}) => {
         showViewModal={showViewModal}
         itemId={id}
         onClose={toggleViewModal}
+        onDelete={onDeleteHandler}
       />) : null}
       {showCreateModal ? (
       <CreateItemModal
         showCreateModal={showCreateModal}
         onClose={toggleCreateModal}
-        refetch={refetchHandler}
+        onCreate={onCreateHandler}
       />) : null}
     </>
   );

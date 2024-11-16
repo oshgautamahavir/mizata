@@ -6,6 +6,7 @@ import './ViewItemModal.css';
 import CloseButtonIcon from './CloseButtonIcon';
 
 import { getItem } from "../../store/index";
+import { deleteItem } from "../../store/index";
 
 function getFormattedDate(dateString) {
   const date = new Date(dateString)
@@ -14,7 +15,7 @@ function getFormattedDate(dateString) {
     'en-us', { year:"numeric", month:"long", day:"numeric"})
 }
 
-const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
+const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete }) => {
   const [item, setItem] = useState({})
 
   // Get the details of the item
@@ -27,6 +28,11 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
       getItemHandler();
     }
   }, []);
+
+  const deleteItemHandler = async () => {
+    await deleteItem(itemId);
+    onDelete();
+  }
 
   return showViewModal ? (
     <div className="modal-overlay" onClick={onClose}>
@@ -58,7 +64,7 @@ const ViewItemModal = ({ showViewModal, onClose, itemId }) => {
           </div>
         </div>
         <div className="buttons-container">
-          <button className="delete-button"> Delete </button>
+          <button className="delete-button" onClick={deleteItemHandler}> Delete </button>
           <button> Edit </button>
         </div>
       </div>
@@ -70,6 +76,7 @@ ViewItemModal.propTypes = {
   showViewModal: PropTypes.bool,
   itemId: PropTypes.string,
   onClose: PropTypes.func,
+  onDelete: PropTypes.func
 }
 
 export default ViewItemModal;
