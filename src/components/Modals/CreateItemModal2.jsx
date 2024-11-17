@@ -40,7 +40,7 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate }) => {
     <div className="modal-overlay">
       <div className="modal-content create-modal" onClick={(e) => e.stopPropagation()}>
         <div className="close-button">
-          <CloseButtonIcon onClick={onClose}/>
+          <CloseButtonIcon onClose={onClose} />
         </div>
         <div className="input-container">
           <div>

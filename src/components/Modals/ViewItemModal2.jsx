@@ -37,8 +37,8 @@ const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete }) => {
   return showViewModal ? (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content view-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="close-button" onClick={onClose}>
-          <CloseButtonIcon />
+        <div className="close-button">
+          <CloseButtonIcon onClose={onClose} />
         </div>
         <div className="details">
           <div>
