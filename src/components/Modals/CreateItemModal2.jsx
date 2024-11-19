@@ -84,7 +84,8 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate }) => {
               <div>
                 <label>
                   <input
-                    type="radio" name="status" value="0"
+                    type="radio" name="status" value="0" id="status-in-use"
+                    checked={status == 0}
                     onChange={(e) => setStatus(e.target.value)}
                   />
                   In use
@@ -93,10 +94,11 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate }) => {
               <div>
                 <label>
                   <input
-                    type="radio" name="status" value="1"
+                    type="radio" name="status" value="1" id="status-in-stock"
+                    checked={status == 1}
                     onChange={(e) => setStatus(e.target.value)}
                   />
-                  Stocked
+                  In stock
                 </label>
               </div>
             </div>
