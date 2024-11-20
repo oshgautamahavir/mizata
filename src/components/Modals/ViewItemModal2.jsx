@@ -15,7 +15,7 @@ function getFormattedDate(dateString) {
     'en-us', { year:"numeric", month:"long", day:"numeric"})
 }
 
-const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete }) => {
+const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => {
   const [item, setItem] = useState({})
 
   // Get the details of the item
@@ -59,13 +59,13 @@ const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete }) => {
             <p> PHP {item.price * item.quantity} </p>
             <div className="status">
               <div className={"status-circle " + (item.status ? 'orange' : 'green')} />
-              {item.status ? 'Stocked' : 'In use'}
+              {item.status ? 'In stock' : 'In use'}
             </div>
           </div>
         </div>
         <div className="buttons-container">
           <button className="delete-button" onClick={deleteItemHandler}> Delete </button>
-          <button> Edit </button>
+          <button onClick={onEdit}> Edit </button>
         </div>
       </div>
     </div>
@@ -76,7 +76,8 @@ ViewItemModal.propTypes = {
   showViewModal: PropTypes.bool,
   itemId: PropTypes.string,
   onClose: PropTypes.func,
-  onDelete: PropTypes.func
+  onDelete: PropTypes.func,
+  onEdit: PropTypes.func
 }
 
 export default ViewItemModal;

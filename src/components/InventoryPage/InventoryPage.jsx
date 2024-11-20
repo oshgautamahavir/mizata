@@ -10,7 +10,7 @@ import WrongIcon from './WrongIcon';
 
 import Item from './Item2';
 import ViewItemModal from "../Modals/ViewItemModal2";
-import CreateItemModal from "../Modals/CreateItemModal2";
+import CreateOrEditModal from "../Modals/CreateOrEditItemModal";
 
 import { fetchItems } from "../../store/index";
 
@@ -30,6 +30,22 @@ const InventoryPage = ({}) => {
   const toggleCreateModal = () => {
     setShowCreateModal(!showCreateModal);
   };
+
+  // We set the id to none first so we will know that this is on
+  // create mode because it has no id passed. This function will
+  // be called from clicking the new item button
+  const openCreateModal = () => {
+    setId('');
+    toggleCreateModal();
+  }
+  
+  // This just closes the view modal and open the edit modal and
+  // there is already an id set during opening the view modal so
+  // no need to set it again
+  const openEditModal = () => {
+    toggleViewModal();
+    toggleCreateModal();
+  }
 
   const setIdHandler = (id) => {
     setId(id);
@@ -94,7 +110,7 @@ const InventoryPage = ({}) => {
             Show <input type='number' className='input-number' /> entries
           </div>
           <div className='create-button'>
-            <button className="button" onClick={toggleCreateModal}> + New item </button>
+            <button className="button" onClick={openCreateModal}> + New item </button>
           </div>
         </div>
         <div className='inventory-table'>
@@ -122,9 +138,11 @@ const InventoryPage = ({}) => {
         itemId={id}
         onClose={toggleViewModal}
         onDelete={onDeleteHandler}
+        onEdit={openEditModal}
       />) : null}
       {showCreateModal ? (
-      <CreateItemModal
+      <CreateOrEditModal
+        itemId={id}
         showCreateModal={showCreateModal}
         onClose={toggleCreateModal}
         onCreate={onCreateHandler}

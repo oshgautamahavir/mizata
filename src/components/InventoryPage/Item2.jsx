@@ -16,7 +16,7 @@ const Item = ({ item, onClick }) => {
       <p> { item.quantity } </p>
       <p> { getFormattedDate(item.createdAt) } </p>
       <p> { item.price } </p>
-      <p> { item.status === 0 ? 'In use' : 'In Stock' } </p>
+      <p> { item.status === 0 ? 'In use' : 'In stock' } </p>
     </div>
   );
 };

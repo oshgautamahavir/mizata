@@ -7,14 +7,31 @@ import CloseButtonIcon from './CloseButtonIcon';
 import AlertIcon from './AlertIcon';
 
 import { addItem } from "../../store/index";
+import { getItem } from "../../store/index";
 
-const CreateItemModal = ({ showCreateModal, onClose, onCreate }) => {
+const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
   const [status, setStatus] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Get the details of the item
+  useEffect(() => {
+    if (itemId) {
+      const getItemHandler = async () => {
+        const item = await getItem(itemId);
+        setName(item.name)
+        setDescription(item.description);
+        setQuantity(item.quantity);
+        setPrice(item.price);
+        setStatus(item.status);
+      };
+      getItemHandler();
+    }
+  }, []);
+
 
   const handleAddItem = async () => {
     await addItem({ name, description, quantity, price, status });
