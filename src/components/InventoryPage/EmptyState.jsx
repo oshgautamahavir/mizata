@@ -16,7 +16,7 @@ const EmptyState = ({ searchKey }) => {
     },[searchKey])
 
     return (
-        <div className="bg-gray-100 flex items-center justify-center h-screen pb-64">
+        <div className="empty-state">
             <div className="text-center">
                 <Icon searchKey={searchKey} />
                 <h2 className="mt-2 text-lg leading-6 font-medium text-gray-900">No Items Found</h2>

@@ -9,8 +9,9 @@ import PaperIcon from './PaperIcon';
 import WrongIcon from './WrongIcon';
 
 import Item from './Item2';
-import ViewItemModal from "../Modals/ViewItemModal2";
-import CreateOrEditModal from "../Modals/CreateOrEditItemModal";
+import ViewItemModal from '../Modals/ViewItemModal2';
+import CreateOrEditModal from '../Modals/CreateOrEditItemModal';
+import EmptyState from './EmptyState';
 
 import { fetchItems } from "../../store/index";
 
@@ -121,6 +122,7 @@ const InventoryPage = ({}) => {
             <p>Price</p>
             <p>Status</p>
           </div>
+          {items.length > 0 ? (
           <div className='inventory-items'>
             {items.map((item) => (
               <Item
@@ -129,7 +131,9 @@ const InventoryPage = ({}) => {
                 onClick={() => setIdHandler(item._id)}
               />
             ))}
-          </div>
+          </div> ) : (
+            <EmptyState searchKey={searchKey} />
+          )}
         </div>
       </div>
       {showViewModal ? (
