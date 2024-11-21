@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 
-import './CreateItemModal.css';
+import './CreateOrEditItemModal.css';
 
 import CloseButtonIcon from './CloseButtonIcon';
 import AlertIcon from './AlertIcon';
 
 import { addItem } from "../../store/index";
+import { editItem } from "../../store/index";
 import { getItem } from "../../store/index";
 
 const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId }) => {
@@ -38,18 +39,27 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
     onCreate();
   };
 
+  const handleEditItem = async (id) => {
+    await editItem ({ name, description, quantity, price, status }, itemId);
+    onCreate();
+  }
+
   const validateForm = () => {
     if (name === '') {
-      setErrorMessage('Please input item name')
+      setErrorMessage('Please input item name');
     } else if (description === '') {
-      setErrorMessage('Please input item description.')
+      setErrorMessage('Please input item description.');
     } else if (quantity === 0) {
-      setErrorMessage('Please input the quantity of item.')
+      setErrorMessage('Please input the quantity of item.');
     } else if (price === 0) {
-      setErrorMessage('Please input item price.')
+      setErrorMessage('Please input item price.');
     } else {
-      setErrorMessage('')
-      handleAddItem()
+      setErrorMessage('');
+      if (itemId) {
+        handleEditItem();
+      } else {
+        handleAddItem();
+      }
     }
   }
 
@@ -84,14 +94,14 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
             <div>
               PHP
               <input
-                className="create-input price" type="number" name="quantity" id="quantity"
-                value={quantity} onChange={(e) => setQuantity(e.target.value)}
+                className="create-input price" type="number" name="price" id="price"
+                value={price} onChange={(e) => setPrice(e.target.value)}
               />
             </div>
             <div>
               <input
-                className="create-input quantity" type="number" name="price" id="price"
-                value={price} onChange={(e) => setPrice(e.target.value)}
+                className="create-input quantity" type="number" name="quantity" id="quantity"
+                value={quantity} onChange={(e) => setQuantity(e.target.value)}
               />
             </div>
             <div>
@@ -130,7 +140,12 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
         </div>
         <div className="buttons-container">
           <button onClick={onClose}> Cancel </button>
-          <button className="delete-button" onClick={validateForm}> Create </button>
+          <button
+            className={itemId ? 'edit-button' : 'create-button'}
+            onClick={validateForm}
+          > 
+            {itemId ? 'Update' : 'Create'}
+          </button>
         </div>
       </div>
     </div>

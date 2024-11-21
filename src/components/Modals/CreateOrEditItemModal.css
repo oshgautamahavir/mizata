@@ -120,8 +120,14 @@
     border-radius: 4px;
 }
 
-.create-modal .buttons-container .delete-button {
+.create-modal .buttons-container .create-button {
     background-color: green;
+    border: none;
+    color: white;
+}
+
+.create-modal .buttons-container .edit-button {
+    background-color: blue;
     border: none;
     color: white;
 }
@@ -133,7 +139,12 @@
     border: none;
 }
 
-.create-modal .buttons-container .delete-button:hover {
+.create-modal .buttons-container .create-button:hover {
     background-color: lightgreen;
+    opacity: 1;
+}
+
+.create-modal .buttons-container .edit-button:hover {
+    background-color: lightblue;
     opacity: 1;
 }
