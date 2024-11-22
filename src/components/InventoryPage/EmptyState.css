@@ -1,6 +1,20 @@
 .empty-state {
     display: flex;
-    background-color: gray;
     align-items: center;
     justify-content: center;
+    margin-top: 48px;
+}
+
+.empty-state h2 {
+    margin-top: 8px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    color: rgb(17 24 39);
+}
+
+.empty-state p {
+    margin-top: 4px;
+    font-size: 14px;
+    color: rgb(107 114 128);
 }

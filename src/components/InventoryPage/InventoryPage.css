@@ -76,6 +76,7 @@
 
 .inventory-table {
     height: 75%;
+    width: 90%;
     margin-left: 24px;
 
 }
@@ -83,7 +84,6 @@
 .column-names {
     display: flex;
     justify-content: space-between;
-    width: 90%;
 
 }
 
@@ -97,5 +97,4 @@
     overflow-y: auto;
     overflow-x: hidden;
     height: 90%;
-    width: 90%;
 }
