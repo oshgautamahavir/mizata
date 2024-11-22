@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { debounce } from 'lodash';
 
 import './InventoryPage.css';
 
@@ -23,6 +24,8 @@ const InventoryPage = ({}) => {
   const [showViewModal, setShowViewModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [id, setId] = useState('');
+
+  const searchKeyRef = useRef(searchKey);
 
   const toggleViewModal = () => {
     setShowViewModal(!showViewModal);
@@ -53,17 +56,38 @@ const InventoryPage = ({}) => {
     toggleViewModal();
   }
 
+  useEffect(() => {
+    searchKeyRef.current = searchKey;
+  }, [searchKey]);
+
   // Fetch items handler
   const fetchItemsHandler = async () => {
-    const itemsFromServer = await fetchItems(searchKey);
+    const itemsFromServer = await fetchItems(searchKeyRef.current);
     setItems(itemsFromServer.items);
     setItemsCount(itemsFromServer.count);
   };
 
   // Initial fetch items
   useEffect(() => {
+    if (!searchKey) {
+      fetchItemsHandler();
+    }
+  }, []);
+
+  // Delay search call by 300 ms
+  const debouncedSearch = useRef(debounce(() => {
     fetchItemsHandler();
-  }, [searchKey, filterDate]);
+  }, 300)).current;
+
+  useEffect(() => {
+    if (searchKey.length > 3 || searchKey.length === 0) {
+      debouncedSearch();
+    }
+
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [searchKey]);
 
   const onCreateHandler = () => {
     toggleCreateModal();
@@ -105,7 +129,9 @@ const InventoryPage = ({}) => {
         <div className='header'>
           <div className='search-container'>
             Search:
-            <input type='text' className='search-box' />
+            <input type='text' className='search-box' id='search'
+              onChange={(e) => setSearchKey(e.target.value)}
+            />
           </div>
           <div className='show-entries'>
             Show <input type='number' className='input-number' /> entries
