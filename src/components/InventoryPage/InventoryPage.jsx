@@ -19,13 +19,15 @@ import { fetchItems } from "../../store/index";
 const InventoryPage = ({}) => {
   const [items, setItems] = useState([])
   const [itemsCount, setItemsCount] = useState(0)
-  const [searchKey, setSearchKey] = useState("")
   const [filterDate, setFilterDate] = useState("")
   const [showViewModal, setShowViewModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [id, setId] = useState('');
+  const [searchKey, setSearchKey] = useState("")
+  const [entries, setEntries]= useState(10) // Default value show 10 items
 
   const searchKeyRef = useRef(searchKey);
+  const entriesRef = useRef(entries);
 
   const toggleViewModal = () => {
     setShowViewModal(!showViewModal);
@@ -60,9 +62,16 @@ const InventoryPage = ({}) => {
     searchKeyRef.current = searchKey;
   }, [searchKey]);
 
+  useEffect(() => {
+    entriesRef.current = entries;
+  }, [entries]);
+
   // Fetch items handler
   const fetchItemsHandler = async () => {
-    const itemsFromServer = await fetchItems(searchKeyRef.current);
+    const itemsFromServer = await fetchItems(
+      searchKeyRef.current, entriesRef.current
+    );
+
     setItems(itemsFromServer.items);
     setItemsCount(itemsFromServer.count);
   };
@@ -88,6 +97,14 @@ const InventoryPage = ({}) => {
       debouncedSearch.cancel();
     };
   }, [searchKey]);
+
+  useEffect(() => {
+    debouncedSearch();
+
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [entries])
 
   const onCreateHandler = () => {
     toggleCreateModal();
@@ -134,10 +151,16 @@ const InventoryPage = ({}) => {
             />
           </div>
           <div className='show-entries'>
-            Show <input type='number' className='input-number' /> entries
+            Show
+            <input type='number' className='input-number' id='entries'
+              min='1' value={entries} onChange={(e) => setEntries(e.target.value)}
+            />
+            entries
           </div>
           <div className='create-button'>
-            <button className="button" onClick={openCreateModal}> + New item </button>
+            <button className="button" onClick={openCreateModal}>
+              + New item
+            </button>
           </div>
         </div>
         <div className='inventory-table'>

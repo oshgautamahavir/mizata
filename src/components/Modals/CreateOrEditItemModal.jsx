@@ -95,13 +95,13 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
               PHP
               <input
                 className="create-input price" type="number" name="price" id="price"
-                value={price} onChange={(e) => setPrice(e.target.value)}
+                min="0" value={price} onChange={(e) => setPrice(e.target.value)}
               />
             </div>
             <div>
               <input
                 className="create-input quantity" type="number" name="quantity" id="quantity"
-                value={quantity} onChange={(e) => setQuantity(e.target.value)}
+                min="0" value={quantity} onChange={(e) => setQuantity(e.target.value)}
               />
             </div>
             <div>
