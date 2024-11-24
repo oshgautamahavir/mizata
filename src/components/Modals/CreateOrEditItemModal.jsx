@@ -10,6 +10,8 @@ import { addItem } from "../../store/index";
 import { editItem } from "../../store/index";
 import { getItem } from "../../store/index";
 
+import SuccessModal from "./SuccessModal";
+
 const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -17,6 +19,7 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
   const [price, setPrice] = useState(0);
   const [status, setStatus] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Get the details of the item
   useEffect(() => {
@@ -36,12 +39,12 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
 
   const handleAddItem = async () => {
     await addItem({ name, description, quantity, price, status });
-    onCreate();
+    toggleSuccessModal();
   };
 
   const handleEditItem = async (id) => {
     await editItem ({ name, description, quantity, price, status }, itemId);
-    onCreate();
+    toggleSuccessModal();
   }
 
   const validateForm = () => {
@@ -62,6 +65,10 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
       }
     }
   }
+
+  const toggleSuccessModal = () => {
+    setShowSuccessModal(!showSuccessModal);
+  };
 
   return showCreateModal ? (
     <div className="modal-overlay">
@@ -148,6 +155,10 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
           </button>
         </div>
       </div>
+      <SuccessModal
+        showSuccessModal={showSuccessModal}
+        closeModal={onCreate}
+      />
     </div>
   ) : null;
 };
