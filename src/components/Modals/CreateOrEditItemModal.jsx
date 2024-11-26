@@ -155,10 +155,12 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
           </button>
         </div>
       </div>
-      <SuccessModal
-        showSuccessModal={showSuccessModal}
-        closeModal={onCreate}
-      />
+      {showSuccessModal ? (
+        <SuccessModal
+          showSuccessModal={showSuccessModal}
+          closeModal={onCreate}
+        />
+      ) : null}
     </div>
   ) : null;
 };
