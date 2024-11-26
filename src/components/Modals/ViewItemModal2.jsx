@@ -8,6 +8,8 @@ import CloseButtonIcon from './CloseButtonIcon';
 import { getItem } from "../../store/index";
 import { deleteItem } from "../../store/index";
 
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
+
 function getFormattedDate(dateString) {
   const date = new Date(dateString)
 
@@ -16,7 +18,8 @@ function getFormattedDate(dateString) {
 }
 
 const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => {
-  const [item, setItem] = useState({})
+  const [item, setItem] = useState({});
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   // Get the details of the item
   useEffect(() => {
@@ -33,6 +36,10 @@ const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => 
     await deleteItem(itemId);
     onDelete();
   }
+
+  const toggleConfirmationModal = () => {
+    setShowConfirmationModal(!showConfirmationModal);
+  };
 
   return showViewModal ? (
     <div className="modal-overlay" onClick={onClose}>
@@ -64,9 +71,15 @@ const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => 
           </div>
         </div>
         <div className="buttons-container">
-          <button className="delete-button" onClick={deleteItemHandler}> Delete </button>
+          <button className="delete-button" onClick={toggleConfirmationModal}> Delete </button>
           <button onClick={onEdit}> Edit </button>
         </div>
+        {showConfirmationModal ? (
+          <DeleteConfirmationModal 
+            showDeleteModal={showConfirmationModal}
+            closeModal={toggleConfirmationModal}
+          />
+        ) : null}
       </div>
     </div>
   ) : null;
