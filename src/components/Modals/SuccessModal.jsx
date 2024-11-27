@@ -4,18 +4,25 @@ import './SuccessModal.css';
 
 import CircleCheckIcon from './CircleCheckIcon';
 
-const SuccessModal = ({ showSuccessModal, closeModal }) => {
+const SuccessModal = ({ showSuccessModal, closeModal, message }) => {
   if (!showSuccessModal) return null;
+
+  // TODO: Find a way that the icon in the className does not repeat
 
   return (
     <div className="modal-overlay">
       <div className="success-modal">
-        <div className="icon">
+        <div className={message==='added' ? 'icon green' : 'icon red'}>
           <CircleCheckIcon />
         </div>
-        <p > Item has been successfully created. </p>
+        <p > Item has been successfully {message}. </p>
         <div className='button-container'>
-          <button onClick={closeModal}> Dismiss </button>
+          <button
+            className={message === 'added' ? 'green' : 'red'}
+            onClick={closeModal}
+          >
+            Dismiss
+          </button>
         </div>
       </div>
     </div>
@@ -24,7 +31,8 @@ const SuccessModal = ({ showSuccessModal, closeModal }) => {
 
 SuccessModal.propTypes = {
   showSuccessModal: PropTypes.bool,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
+  message: PropTypes.string
 }
 
 export default SuccessModal;

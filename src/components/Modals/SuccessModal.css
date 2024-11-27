@@ -16,6 +16,14 @@
     height: 150px;
 }
 
+.success-modal .green svg {
+    stroke: green;
+}
+
+.success-modal .red svg {
+    stroke: red;
+}
+
 .success-modal p {
     display: flex;
     justify-content: center;
@@ -30,12 +38,26 @@
 .success-modal button {
     border-radius: 4px;
     padding: 4px 12px;
-    border: 1px solid black;
+    background-color: green;
+    border: 1px solid green;
+    color: white;
     width: 90%;
 }
 
 .success-modal button:hover {
-    background-color: lightgray;
-    border: 1px solid lightgray;
+    background-color: lightgreen;
+    border: 1px solid lightgreen;
     color: white;
+}
+
+.success-modal .button-container .red {
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+
+.success-modal .button-container .red:hover {
+    background-color: lightcoral;
+    color: white;
+    border: 1px solid lightcoral;
 }

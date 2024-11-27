@@ -9,6 +9,7 @@ import { getItem } from "../../store/index";
 import { deleteItem } from "../../store/index";
 
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
+import SuccessModal from "./SuccessModal";
 
 function getFormattedDate(dateString) {
   const date = new Date(dateString)
@@ -20,6 +21,7 @@ function getFormattedDate(dateString) {
 const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => {
   const [item, setItem] = useState({});
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Get the details of the item
   useEffect(() => {
@@ -34,8 +36,13 @@ const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => 
 
   const deleteItemHandler = async () => {
     await deleteItem(itemId);
-    onDelete();
+    toggleConfirmationModal();
+    toggleSuccessModal();
   }
+
+  const toggleSuccessModal = () => {
+    setShowSuccessModal(!showSuccessModal);
+  };
 
   const toggleConfirmationModal = () => {
     setShowConfirmationModal(!showConfirmationModal);
@@ -78,8 +85,16 @@ const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => 
           <DeleteConfirmationModal 
             showDeleteModal={showConfirmationModal}
             closeModal={toggleConfirmationModal}
+            onDelete={deleteItemHandler}
           />
         ) : null}
+        {showSuccessModal ? (
+        <SuccessModal
+          showSuccessModal={showSuccessModal}
+          closeModal={onDelete}
+          message='deleted'
+        />
+      ) : null}
       </div>
     </div>
   ) : null;
