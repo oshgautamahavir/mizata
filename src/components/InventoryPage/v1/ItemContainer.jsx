@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../../Pagination/Pagination";
 import Item from "./Item";
 
 const ItemContainer = ({ items, onDelete, onEdit, itemsCount, currentPage, changePage }) => {

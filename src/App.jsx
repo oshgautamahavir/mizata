@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 
 import './App.css';
 
-import ItemContainer from "./components/InventoryPage/ItemContainer2";
 import InventoryPage from "./components/InventoryPage/InventoryPage";
 import EmptyState from "./components/InventoryPage/EmptyState";
 import Navbar from "./components/Navbar/Navbar2";

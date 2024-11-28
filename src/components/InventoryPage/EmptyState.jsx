@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import PropTypes from 'prop-types'
 
-import Icon from "./Icon";
+import './css/EmptyState.css'
 
-import './EmptyState.css'
+import Icon from "./icons/Icon";
 
 const EmptyState = ({ searchKey }) => {
     const [errorMessage, setErrorMessage] = useState('')

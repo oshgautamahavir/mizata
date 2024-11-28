@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { debounce } from 'lodash';
 
-import './InventoryPage.css';
+import './css/InventoryPage.css';
 
-import InventoryIcon from './InventoryIcon';
-import ListIcon from './ListIcon';
-import CheckIcon from './CheckIcon';
-import PaperIcon from './PaperIcon';
-import WrongIcon from './WrongIcon';
+import InventoryIcon from './icons/InventoryIcon';
+import ListIcon from './icons/ListIcon';
+import CheckIcon from './icons/CheckIcon';
+import PaperIcon from './icons/PaperIcon';
+import WrongIcon from './icons/WrongIcon';
 
-import Item from './Item2';
+import Item from './Item';
 import ViewItemModal from '../Modals/ViewItemModal';
 import CreateOrEditModal from '../Modals/CreateOrEditItemModal';
 import EmptyState from './EmptyState';
