@@ -159,7 +159,7 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
         <SuccessModal
           showSuccessModal={showSuccessModal}
           closeModal={onCreate}
-          message='added'
+          message={itemId ? 'updated' : 'created'}
         />
       ) : null}
     </div>

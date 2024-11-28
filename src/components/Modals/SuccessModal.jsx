@@ -12,13 +12,13 @@ const SuccessModal = ({ showSuccessModal, closeModal, message }) => {
   return (
     <div className="modal-overlay">
       <div className="success-modal">
-        <div className={message==='added' ? 'icon green' : 'icon red'}>
+        <div className={message==='deleted' ? 'icon red' : 'icon green'}>
           <CircleCheckIcon />
         </div>
         <p > Item has been successfully {message}. </p>
         <div className='button-container'>
           <button
-            className={message === 'added' ? 'green' : 'red'}
+            className={message === 'deleted' ? 'red' : 'green'}
             onClick={closeModal}
           >
             Dismiss
