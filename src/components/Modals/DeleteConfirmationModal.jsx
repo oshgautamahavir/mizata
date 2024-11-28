@@ -17,8 +17,8 @@ const DeleteConfirmationModal = ({ showDeleteModal, closeModal, onDelete }) => {
         </div>
         <p> Are you sure you wanto delete this item? </p>
         <div className="button-container">
-            <button className="mx-2 w-24 p-2.5 bg-white text-red-500 border border-red-500 rounded-md cursor-pointer" onClick={closeModal}>Cancel</button>
-            <button className="w-24 p-2.5 bg-red-500 text-white rounded-md cursor-pointer" onClick={onDelete}>Yes</button>
+            <button className="cancel" onClick={closeModal}>Cancel</button>
+            <button className="yes" onClick={onDelete}>Yes</button>
         </div>
       </div>
     </div>
