@@ -4,7 +4,7 @@ import './App.css';
 
 import InventoryPage from "./components/InventoryPage/InventoryPage";
 import EmptyState from "./components/InventoryPage/EmptyState";
-import Navbar from "./components/Navbar/Navbar2";
+import Navbar from "./components/Navbar/Navbar";
 import SuccessModal from "./components/Modals/SuccessModal";
 import Sidebar from "./components/Sidebar/Sidebar"
 
@@ -99,21 +99,6 @@ const App = () => {
           <InventoryPage />
         </div>
       </div>
-      {/* <SuccessModal
-        showSuccessModal={showSuccessModal}
-        closeModal={handleCloseSuccess}
-      />
-      {items.length > 0 ? (
-      <ItemContainer
-        items={items}
-        onDelete={deleteItemHandler}
-        onEdit={editItemHandler}
-        itemsCount={itemsCount}
-        currentPage={currentPage}
-        changePage={setCurrentPage}
-      />) : (
-        <EmptyState searchKey={searchKey}/>
-      )} */}
     </div>
   );
 };

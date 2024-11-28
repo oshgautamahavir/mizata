@@ -1,10 +1,11 @@
-import './Sidebar.css';
-import DashboardIcon from './DashboardIcon';
-import SalesIcon from './SalesIcon';
-import SuppliersIcon from './SuppliersIcon';
-import InventoryIcon from './InventoryIcon';
-import ReportsIcon from './ReportsIcon';
-import ManageIcon from './ManageIcon';
+import './css/Sidebar.css';
+
+import DashboardIcon from './icons/DashboardIcon';
+import SalesIcon from './icons/SalesIcon';
+import SuppliersIcon from './icons/SuppliersIcon';
+import InventoryIcon from './icons/InventoryIcon';
+import ReportsIcon from './icons/ReportsIcon';
+import ManageIcon from './icons/ManageIcon';
 
 const Sidebar = ({}) => {
     return (
