@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 
-import './CreateOrEditItemModal.css';
+import './css/CreateOrEditItemModal.css';
 
-import CloseButtonIcon from './CloseButtonIcon';
-import AlertIcon from './AlertIcon';
+import CloseButtonIcon from './icons/CloseButtonIcon';
+import AlertIcon from './icons/AlertIcon';
 
 import { addItem } from "../../store/index";
 import { editItem } from "../../store/index";

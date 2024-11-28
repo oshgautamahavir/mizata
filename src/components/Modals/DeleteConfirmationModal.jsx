@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types'
 
-import TrashIcon from './TrashIcon';
+import TrashIcon from './icons/TrashIcon';
 
-import './DeleteConfirmationModal.css'
+import './css/DeleteConfirmationModal.css'
 
 const DeleteConfirmationModal = ({ showDeleteModal, closeModal, onDelete }) => {
   if (!showDeleteModal) return null;
-
-  //TODO: Transfer and convert the tailwind css to normal css and to another file
 
   return (
     <div className="modal-overlay">

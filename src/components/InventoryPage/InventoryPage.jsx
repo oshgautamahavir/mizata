@@ -10,7 +10,7 @@ import PaperIcon from './PaperIcon';
 import WrongIcon from './WrongIcon';
 
 import Item from './Item2';
-import ViewItemModal from '../Modals/ViewItemModal2';
+import ViewItemModal from '../Modals/ViewItemModal';
 import CreateOrEditModal from '../Modals/CreateOrEditItemModal';
 import EmptyState from './EmptyState';
 

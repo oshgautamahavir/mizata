@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 
-import './SuccessModal.css';
+import './css/SuccessModal.css';
 
-import CircleCheckIcon from './CircleCheckIcon';
+import CircleCheckIcon from './icons/CircleCheckIcon';
 
 const SuccessModal = ({ showSuccessModal, closeModal, message }) => {
   if (!showSuccessModal) return null;

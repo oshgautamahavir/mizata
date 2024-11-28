@@ -1,147 +1,110 @@
 import { useState, useEffect } from "react";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import EditConfirmationModal from "./EditConfirmationModal"
+import './css/ViewItemModal.css';
 
+import CloseButtonIcon from './icons/CloseButtonIcon';
 
-const ViewItemModal = ({ showViewModal, onClose, onEdit, item }) => {
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [editable, setEditable] = useState(false);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [quantity, setQuantity] = useState(0);
-  const [price, setPrice] = useState(0);
-  const [date, setDate] = useState("")
-  const [showConfirmEditModal, setShowConfirmEditModal] = useState(false)
+import { getItem } from "../../store/index";
+import { deleteItem } from "../../store/index";
 
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
+import SuccessModal from "./SuccessModal";
+
+function getFormattedDate(dateString) {
+  const date = new Date(dateString)
+
+  return date.toLocaleDateString(
+    'en-us', { year:"numeric", month:"long", day:"numeric"})
+}
+
+const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => {
+  const [item, setItem] = useState({});
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  // Get the details of the item
   useEffect(() => {
-    setName(item.name);
-    setDescription(item.description);
-    setQuantity(item.quantity);
-    setPrice(item.price);
-    setDate(item.createdAt);
-  }, [item])
+    if (showViewModal) {
+      const getItemHandler = async () => {
+        const item = await getItem(itemId);
+        setItem(item);
+      };
+      getItemHandler();
+    }
+  }, []);
 
-  useEffect(() => {
-    setTotalPrice(quantity * price);
-  }, [quantity, price]);
-
-  if (!showViewModal) {
-    return null;
+  const deleteItemHandler = async () => {
+    await deleteItem(itemId);
+    toggleConfirmationModal();
+    toggleSuccessModal();
   }
 
-  const toggleEditMode = () => {
-    setEditable(!editable);
+  const toggleSuccessModal = () => {
+    setShowSuccessModal(!showSuccessModal);
   };
 
-  const toggleConfirmEditModal = () => {
-    setShowConfirmEditModal(!showConfirmEditModal)
-  }
+  const toggleConfirmationModal = () => {
+    setShowConfirmationModal(!showConfirmationModal);
+  };
 
-  const handleEditItem = () => {
-    onEdit({ name, description, quantity, price, 'status': 0 }, item._id)
-    toggleEditMode()
-    toggleConfirmEditModal()
-    onClose()
-  }
-
-  function Button({ isEdit }) {
-    return (
-      <button
-            onClick={ isEdit ? toggleConfirmEditModal : toggleEditMode }
-            className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-200 ml-2"
-          >
-            { isEdit ? 'Save' : 'Edit'}
-          </button>
-    );
-  }
-
-  Button.propTypes = {
-    isEdit: PropTypes.bool
-  }
-
-  return (
-    <div className="modal">
-      <div className="modal-content">
-        <div>
-          <input
-            className="item-name"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Name of the item"
-            value={name}
-            disabled={!editable}
-            onChange={(e) => setName(e.target.value)}
+  return showViewModal ? (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content view-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="close-button">
+          <CloseButtonIcon onClose={onClose} />
+        </div>
+        <div className="details">
+          <div>
+            <p> Item: </p>
+            <p> Description: </p>
+            <p> Added on: </p>
+            <p> Price: </p>
+            <p> Quantity: </p>
+            <p> Total Price: </p>
+            <p> Status: </p>
+          </div>
+          <div>
+            <p><b> {item.name} </b></p>
+            <p> {item.description} </p>
+            <p> {getFormattedDate(item.createdAt)} </p>
+            <p> PHP {item.price} </p>
+            <p> {item.quantity} </p>
+            <p> PHP {item.price * item.quantity} </p>
+            <div className="status">
+              <div className={"status-circle " + (item.status ? 'orange' : 'green')} />
+              {item.status ? 'In stock' : 'In use'}
+            </div>
+          </div>
+        </div>
+        <div className="buttons-container">
+          <button className="delete-button" onClick={toggleConfirmationModal}> Delete </button>
+          <button onClick={onEdit}> Edit </button>
+        </div>
+        {showConfirmationModal ? (
+          <DeleteConfirmationModal 
+            showDeleteModal={showConfirmationModal}
+            closeModal={toggleConfirmationModal}
+            onDelete={deleteItemHandler}
           />
-        </div>
-        <div>
-          <textarea
-            name="description"
-            id="description"
-            className="description"
-            rows="10"
-            value={description}
-            disabled={!editable}
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-        </div>
-        <p className="text-lg font-bold py-4">Item description</p>
-        <div className="py-2 grid grid-cols-4">
-          <span> Quantity: </span>
-          <input
-            className="col-span-3 border border-gray-400 w-65 h-8 mx-16"
-            type="number"
-            name="quantity"
-            id="quantity"
-            value={quantity}
-            disabled={!editable}
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-        </div>
-        <div className="py-2 grid grid-cols-4">
-          <span> Unit Price: </span>
-          <input
-            className="col-span-3 border border-gray-400 w-65 h-8 mx-16"
-            type="number"
-            name="price"
-            id="price"
-            value={price}
-            disabled={!editable}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
-        <div className="py-2 grid grid-cols-4">
-          <span> Total Price: </span>
-          <span className="col-span-3 pl-10">PHP {totalPrice.toFixed(2)}</span>
-        </div>
-        <div className="py-2 grid grid-cols-3">
-          <span> Date added: </span>
-          <p> {date} </p>
-        </div>
-        <div className="py-3 ml-64 mt-4">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 rounded bg-gray-100 hover:bg-gray-50 ml-2"
-          >
-            Cancel
-          </button>
-          <Button isEdit={editable}/ >
-          <EditConfirmationModal
-            showEditModal={showConfirmEditModal}
-            closeModal={toggleConfirmEditModal}
-            onEdit={handleEditItem}
-          />
-        </div>
+        ) : null}
+        {showSuccessModal ? (
+        <SuccessModal
+          showSuccessModal={showSuccessModal}
+          closeModal={onDelete}
+          message='deleted'
+        />
+      ) : null}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 ViewItemModal.propTypes = {
   showViewModal: PropTypes.bool,
-  item: PropTypes.object,
+  itemId: PropTypes.string,
   onClose: PropTypes.func,
+  onDelete: PropTypes.func,
   onEdit: PropTypes.func
 }
 
