@@ -16,12 +16,16 @@
     height: 150px;
 }
 
-.success-modal .green svg {
+.success-modal .created svg {
     stroke: green;
 }
 
-.success-modal .red svg {
+.success-modal .removed svg {
     stroke: red;
+}
+
+.success-modal .updated svg {
+    stroke: blue;
 }
 
 .success-modal p {
@@ -36,28 +40,43 @@
 }
 
 .success-modal button {
+    width: 90%;
     border-radius: 4px;
     padding: 4px 12px;
+}
+
+.success-modal .button-container .created {
     background-color: green;
     border: 1px solid green;
     color: white;
-    width: 90%;
 }
 
-.success-modal button:hover {
+.success-modal .button-container .created:hover {
     background-color: lightgreen;
     border: 1px solid lightgreen;
     color: white;
 }
 
-.success-modal .button-container .red {
+.success-modal .button-container .removed {
     background-color: red;
     color: white;
     border: 1px solid red;
 }
 
-.success-modal .button-container .red:hover {
+.success-modal .button-container .removed:hover {
     background-color: lightcoral;
     color: white;
     border: 1px solid lightcoral;
+}
+
+.success-modal .button-container .updated {
+    background-color: blue;
+    color: white;
+    border: 1px solid blue;
+}
+
+.success-modal .button-container .updated:hover {
+    background-color: lightblue;
+    color: white;
+    border: 1px solid lightblue;
 }

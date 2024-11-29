@@ -92,7 +92,7 @@ const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => 
         <SuccessModal
           showSuccessModal={showSuccessModal}
           closeModal={onDelete}
-          message='deleted'
+          message='removed'
         />
       ) : null}
       </div>

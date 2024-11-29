@@ -11,6 +11,7 @@ import { editItem } from "../../store/index";
 import { getItem } from "../../store/index";
 
 import SuccessModal from "./SuccessModal";
+import EditConfirmationModal from "./EditConfirmationModal";
 
 const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId }) => {
   const [name, setName] = useState("");
@@ -20,6 +21,7 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
   const [status, setStatus] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showConfirmEditModal, setShowConfirmEditModal] = useState(false);
 
   // Get the details of the item
   useEffect(() => {
@@ -44,6 +46,7 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
 
   const handleEditItem = async (id) => {
     await editItem ({ name, description, quantity, price, status }, itemId);
+    toggleConfirmEditModal();
     toggleSuccessModal();
   }
 
@@ -59,7 +62,7 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
     } else {
       setErrorMessage('');
       if (itemId) {
-        handleEditItem();
+        toggleConfirmEditModal();
       } else {
         handleAddItem();
       }
@@ -68,6 +71,10 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
 
   const toggleSuccessModal = () => {
     setShowSuccessModal(!showSuccessModal);
+  };
+
+  const toggleConfirmEditModal = () => {
+    setShowConfirmEditModal(!showConfirmEditModal);
   };
 
   return showCreateModal ? (
@@ -160,6 +167,13 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
           showSuccessModal={showSuccessModal}
           closeModal={onCreate}
           message={itemId ? 'updated' : 'created'}
+        />
+      ) : null}
+      {showConfirmEditModal ? (
+        <EditConfirmationModal
+          showConfirmModal={showConfirmEditModal}
+          closeModal={toggleConfirmEditModal}
+          onEdit={handleEditItem}
         />
       ) : null}
     </div>
