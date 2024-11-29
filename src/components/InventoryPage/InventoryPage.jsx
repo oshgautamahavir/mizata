@@ -159,7 +159,7 @@ const InventoryPage = ({}) => {
           </div>
           <div className='create-button'>
             <button className="button" onClick={openCreateModal}>
-              + New item
+              + Add item
             </button>
           </div>
         </div>

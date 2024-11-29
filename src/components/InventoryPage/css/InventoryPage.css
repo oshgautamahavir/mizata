@@ -40,7 +40,7 @@
 .header button {
     border: 1px solid;
     border-radius: 4px;
-    background-image: linear-gradient(to right, #99996A, hsl(60, 72%, 67%));
+    background-color: rgb(234 179 8);
     color: white;
 }
 

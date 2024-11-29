@@ -3,7 +3,7 @@
 .navbar {
     height: 50px;
     width: 100%;
-    background-image: linear-gradient(to right, #99996A, #ECEB68);
+    background-color: rgb(234 179 8);
     display: flex;
     justify-content: space-between;
 }
