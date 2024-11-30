@@ -15,7 +15,7 @@
 
 .tabs {
     display: flex;
-    margin-top: 36px;
+    margin-top: 18px;
 }
 
 .tab {
@@ -28,7 +28,7 @@
 
 .inventory {
     border: 1px solid;
-    height: 420px;
+    height: calc(100vh - 175px);
 }
 
 .header {
@@ -77,10 +77,8 @@
 }
 
 .inventory-table {
-    height: 75%;
     width: 90%;
     margin-left: 24px;
-
 }
 
 .column-names {
@@ -98,5 +96,5 @@
 .inventory-items {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 90%;
+    height: calc(100vh - 300px);
 }
