@@ -27,13 +27,13 @@ function createWindow() {
       ? 'http://localhost:3001'
       : `file://${path.join(__dirname, '../dist/index.html')}`
   );
+  
   // Open the DevTools.
   if (isDev) {
-    //mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
   }
  
 }
- 
  
 app.whenReady().then(() => {
   createWindow()
