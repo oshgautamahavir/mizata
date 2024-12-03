@@ -28,3 +28,7 @@
 *:focus {
   outline: none;
 }
+
+:root {
+  --mizata-yellow: rgb(234 179 8);
+}

@@ -46,7 +46,7 @@
 
 .header button:hover {
     color: white;
-    background-image: linear-gradient(to right, #99996a7b, hsla(60, 72%, 67%, 0.4));
+    background-color: goldenrod;
 }
 
 .show-entries {

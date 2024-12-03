@@ -3,7 +3,7 @@
 .navbar {
     height: 50px;
     width: 100%;
-    background-color: rgb(234 179 8);
+    background-color: var(--mizata-yellow);
     display: flex;
     justify-content: space-between;
 }
