@@ -1,3 +1,6 @@
 node_modules
 package-lock.json
-
+scripts
+unpacked-asar
+dist
+dist2

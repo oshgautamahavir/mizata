@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "proxy": "http://localhost:3000",
   "main": "electron/electron.js",
+  "description": "test",
+  "author": "rawr",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
@@ -16,6 +18,18 @@
     "electron:builder": "electron-builder",
     "build:for:electron": "tsc --noEmit && cross-env ELECTRON=true vite build",
     "app:build": "npm run build:for:electron && npm run electron:builder"
+  },
+  "build": {
+    "files": [
+      "dist2/**/*",
+      "package.json",
+      "electron/**/*",
+      "!src/**/*",
+      "!node_modules/**/*",
+      "!public/**/*",
+      "!dist/**/*",
+      "!scripts/**/*"
+    ]
   },
   "dependencies": {
     "autoprefixer": "^10.4.20",
@@ -33,17 +47,19 @@
     "wait-on": "^8.0.1"
   },
   "devDependencies": {
+    "asar": "^3.2.0",
     "@eslint/js": "^9.8.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
     "eslint": "^9.8.0",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "nodemon": "^3.1.4",
-    "electron": "^33.2.1",
     "tailwindcss": "^3.4.9",
     "typescript": "^5.2.2",
     "vite": "^5.4.0",

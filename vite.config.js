@@ -8,4 +8,8 @@ export default defineConfig({
     port: 3001
   },
   plugins: [react(), svgr()],
+  base: './',
+  build: {
+    outDir: 'dist2',
+  }
 })
