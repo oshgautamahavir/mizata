@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "proxy": "http://localhost:3000",
   "main": "electron/electron.js",
-  "description": "test",
-  "author": "rawr",
+  "description": "Inventory app for Mizata",
+  "author": "Osho Gautama Mahavir Zaldua",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
@@ -20,6 +20,8 @@
     "app:build": "npm run build:for:electron && npm run electron:builder"
   },
   "build": {
+    "appId": "com.desktop.mizata",
+    "productName": "Mizata Inventory",
     "files": [
       "dist2/**/*",
       "package.json",
@@ -29,7 +31,11 @@
       "!public/**/*",
       "!dist/**/*",
       "!scripts/**/*"
-    ]
+    ],
+    "icon": "mizata-logo.ico",
+    "win": {
+      "icon": "mizata-logo.ico"
+    }
   },
   "dependencies": {
     "autoprefixer": "^10.4.20",
