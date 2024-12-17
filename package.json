@@ -20,7 +20,7 @@
     "app:build": "npm run build:for:electron && npm run electron:builder"
   },
   "build": {
-    "appId": "com.desktop.mizata",
+    "appId": "desktop.mizata",
     "productName": "Mizata Inventory",
     "files": [
       "dist2/**/*",
