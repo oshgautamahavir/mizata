@@ -61,6 +61,11 @@
     width: 100%;
 }
 
+.description {
+    margin-top: 24px !important;
+    margin-bottom: 24px;
+}
+
 .inputs .price {
     width: 50%;
     margin-left: 16px;

@@ -86,7 +86,7 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
         <div className="input-container">
           <div>
             <p> Item: </p>
-            <p> Description: </p>
+            <p className="description"> Description: </p>
             <p> Price: </p>
             <p> Quantity: </p>
             <p> Total Price: </p>
@@ -100,9 +100,10 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
               />
             </div>
             <div>
-              <input
-                className="create-input" type="text" name="description" id="description"
+              <textarea
+                className="create-input" name="description" id="description"
                 value={description} onChange={(e) => setDescription(e.target.value)}
+                rows="3"
               />
             </div>
             <div>
