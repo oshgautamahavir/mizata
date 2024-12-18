@@ -107,7 +107,7 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
               />
             </div>
             <div>
-              PHP
+              ₱
               <input
                 className="create-input price" type="number" name="price" id="price"
                 min="0" value={price} onChange={(e) => setPrice(e.target.value)}
@@ -120,7 +120,7 @@ const CreateItemModal = ({ showCreateModal, onClose, onCreate, onEdit, itemId })
               />
             </div>
             <div>
-              PHP {quantity * price}
+              ₱ {quantity * price}
             </div>
             <div className="status-input">
               <div>

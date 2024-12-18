@@ -20,12 +20,25 @@
 
 .details {
     display: flex;
-    gap: 40px;
+    flex-direction: column;
     margin: 0px 0px 4px 12px;
+}
+
+.details div {
+    display: flex;
+    align-items: center;
 }
 
 .details p {
     margin: 4px 0px;
+}
+
+.details .label {
+    width: 100px;
+}
+
+.details .view-description {
+    width: 275px;
 }
 
 .status {
@@ -53,7 +66,6 @@
     display: flex;
     justify-content: flex-end;
     gap: 8px;
-
 }
 
 .view-modal .buttons-container button {
