@@ -56,21 +56,31 @@ const ViewItemModal = ({ showViewModal, onClose, itemId, onDelete, onEdit }) => 
         </div>
         <div className="details">
           <div>
-            <p> Item: </p>
-            <p> Description: </p>
-            <p> Added on: </p>
-            <p> Price: </p>
-            <p> Quantity: </p>
-            <p> Total Price: </p>
-            <p> Status: </p>
+            <p className="label"> Item: </p>
+            <p><b> {item.name} </b></p>
           </div>
           <div>
-            <p><b> {item.name} </b></p>
-            <p> {item.description} </p>
+            <p className="label"> Description: </p>
+            <p className="view-description"> {item.description} </p>
+          </div>
+          <div>
+            <p className="label"> Added on: </p>
             <p> {getFormattedDate(item.createdAt)} </p>
-            <p> PHP {item.price} </p>
+          </div>
+          <div>
+            <p className="label"> Price: </p>
+            <p> ₱ {item.price} </p>
+          </div>
+          <div>
+            <p className="label"> Quantity: </p>
             <p> {item.quantity} </p>
-            <p> PHP {item.price * item.quantity} </p>
+          </div>
+          <div>
+            <p className="label"> Total Price: </p>
+            <p> ₱ {item.price * item.quantity} </p>
+          </div>
+          <div>
+            <p className="label"> Status: </p>
             <div className="status">
               <div className={"status-circle " + (item.status ? 'orange' : 'green')} />
               {item.status ? 'In stock' : 'In use'}
