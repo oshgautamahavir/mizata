@@ -49,3 +49,11 @@ src/components/../styles: Component-specific styles
 ![image](https://github.com/user-attachments/assets/e0104a19-41d5-43bd-9643-6b4e066d5f55)
 
 ![image](https://github.com/user-attachments/assets/893dec4d-0bc3-46b3-9f46-c29e3a3a3817)
+
+## Contact
+
+For any inquiries or feedback, feel free to reach out:
+
+Email: oshozaldua@gmail.com
+
+GitHub: https://github.com/oshgautamahavir
