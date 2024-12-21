@@ -8,6 +8,7 @@ import ListIcon from './icons/ListIcon';
 import CheckIcon from './icons/CheckIcon';
 import PaperIcon from './icons/PaperIcon';
 import WrongIcon from './icons/WrongIcon';
+import FilterIcon from './icons/FilterIcon';
 
 import Item from './Item';
 import ViewItemModal from '../Modals/ViewItemModal';
@@ -144,11 +145,16 @@ const InventoryPage = ({}) => {
       </div>
       <div className='inventory'>
         <div className='header'>
-          <div className='search-container'>
-            Search:
-            <input type='text' className='search-box' id='search'
-              onChange={(e) => setSearchKey(e.target.value)}
-            />
+          <div className="search-filter">
+            <button>
+              <FilterIcon />
+            </button>
+            <div className='search-container'>
+              Search:
+              <input type='text' className='search-box' id='search'
+                onChange={(e) => setSearchKey(e.target.value)}
+              />
+            </div>
           </div>
           <div className='show-entries'>
             Show
