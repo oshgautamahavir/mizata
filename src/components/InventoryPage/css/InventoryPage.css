@@ -37,14 +37,14 @@
     margin: 24px;
 }
 
-.header button {
+.header .create-button button {
     border: 1px solid;
     border-radius: 4px;
-    background-color: rgb(234 179 8);
+    background-color: var(--mizata-yellow);
     color: white;
 }
 
-.header button:hover {
+.header .create-button button:hover {
     color: white;
     background-color: goldenrod;
 }
@@ -59,6 +59,26 @@
     border: 1px solid;
     width: 20%;
     padding: 0px 4px;
+}
+
+.search-filter {
+    display: flex;
+    gap: 4px;
+}
+
+.search-filter svg {
+    height: 36px;
+    width: 36px;
+    stroke: currentColor;
+}
+
+.search-filter button {
+    border-radius: 4px;
+}
+
+.search-filter button:hover {
+    background-color: var(--mizata-yellow);
+    color: white;
 }
 
 .search-container {
