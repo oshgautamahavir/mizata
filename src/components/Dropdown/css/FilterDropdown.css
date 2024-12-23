@@ -1,0 +1,14 @@
+.filter-dropdown .filter-icon {
+    border-radius: 4px;
+    margin-top: 2px;
+}
+
+.filter-dropdown .filter-icon:hover {
+    background-color: var(--mizata-yellow);
+    color: white;
+}
+
+.filter-dropdown .open {
+    background-color: var(--mizata-yellow);
+    color: white;
+}

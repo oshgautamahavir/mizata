@@ -8,12 +8,12 @@ import ListIcon from './icons/ListIcon';
 import CheckIcon from './icons/CheckIcon';
 import PaperIcon from './icons/PaperIcon';
 import WrongIcon from './icons/WrongIcon';
-import FilterIcon from './icons/FilterIcon';
 
 import Item from './Item';
 import ViewItemModal from '../Modals/ViewItemModal';
 import CreateOrEditModal from '../Modals/CreateOrEditItemModal';
 import EmptyState from './EmptyState';
+import FilterDropdown from "../Dropdown/FilterDropdown";
 
 import { fetchItems } from "../../store/index";
 
@@ -146,9 +146,7 @@ const InventoryPage = ({}) => {
       <div className='inventory'>
         <div className='header'>
           <div className="search-filter">
-            <button>
-              <FilterIcon />
-            </button>
+            <FilterDropdown />
             <div className='search-container'>
               Search:
               <input type='text' className='search-box' id='search'
