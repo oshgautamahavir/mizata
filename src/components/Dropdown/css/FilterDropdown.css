@@ -1,9 +1,33 @@
+.filter-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-dropdown .filter-ref {
+    height: 100%;
+}
+
 .filter-dropdown .filter-icon {
     border-radius: 4px;
-    margin-top: 2px;
+    margin-top: 8px;
 }
 
 .filter-dropdown .filter-icon:hover {
+    background-color: var(--mizata-yellow);
+    color: white;
+}
+
+.filter-dropdown svg {
+    height: 36px;
+    width: 36px;
+    stroke: currentColor;
+}
+
+.filter-dropdown button {
+    border-radius: 4px;
+}
+
+.filter-dropdown button:hover {
     background-color: var(--mizata-yellow);
     color: white;
 }
@@ -12,3 +36,18 @@
     background-color: var(--mizata-yellow);
     color: white;
 }
+
+.filter-dropdown .dropdown-content {
+    position: absolute;
+    top: 90%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    list-style: none;
+    width: 300px;
+    z-index: 1000;
+    padding: 0px 8px;
+  }

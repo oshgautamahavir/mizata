@@ -33,8 +33,8 @@ function FilterDropdown({ onFilter }) {
 
   return (
     <div className="filter-dropdown">
-      <div ref={ref}>
-        <button className={`filter-cion ${isOpen ? "open" : ""}`} onClick={toggleDropdown}>
+      <div className="filter-ref" ref={ref}>
+        <button className={`filter-icon ${isOpen ? "open" : ""}`} onClick={toggleDropdown}>
           <FilterIcon />
         </button>
         {isOpen && (

@@ -63,29 +63,14 @@
 
 .search-filter {
     display: flex;
-    gap: 4px;
-}
-
-.search-filter svg {
-    height: 36px;
-    width: 36px;
-    stroke: currentColor;
-}
-
-.search-filter button {
-    border-radius: 4px;
-}
-
-.search-filter button:hover {
-    background-color: var(--mizata-yellow);
-    color: white;
+    gap: 0px 4px;
 }
 
 .search-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 0px 8px;
 }
 
 .search-box {
