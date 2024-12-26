@@ -39,40 +39,44 @@ function FilterDropdown({ onFilter }) {
         </button>
         {isOpen && (
           <div className="dropdown-content">
-            <p className="font-medium text-lg py-1"> Filter items </p>
-            <p className="font-medium py-1"> Date added: </p>
-            <input
-              type="date"
-              name="filterDate"
-              id="filterDate"
-              className="py-1 ml-4"
-              value={filterDate}
-              onChange={(e) => setFilterDate(e.target.value)}
-            />
-            <p className="font-medium py-1"> Status </p>
-            <input
-              type="checkbox"
-              name="checkboxInUse"
-              id="checkboxInUse"
-              className="py-1"
-            />
-            <label htmlFor="checkboxInUse" className="px-2">
-              In use
-            </label>
-            <input
-              type="checkbox"
-              name="checkboxReturned"
-              id="checkboxReturned"
-              className="py-1"
-            />
-            <label htmlFor="checkboxReturned" className="px-2">
-              Returned
-            </label>
-            <div className="py-2 mt-5">
-              <button onClick={handleClearFilter} className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-100">
+            <p> Date: </p>
+            <div className="date-container">
+              <input
+                type="date"
+                name="filterDate"
+                id="filterDate"
+                value={filterDate}
+                onChange={(e) => setFilterDate(e.target.value)}
+              />
+            </div>
+            <p> Status: </p>
+            <div className="status-container">
+              <div>
+                <input
+                  type="checkbox"
+                  name="checkboxInUse"
+                  id="checkboxInUse"
+                />
+                <label htmlFor="checkboxInUse">
+                  In use
+                </label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  name="checkboxReturned"
+                  id="checkboxReturned"
+                />
+                <label htmlFor="checkboxReturned">
+                  Returned
+                </label>
+              </div>
+            </div>
+            <div className="button-container">
+              <button onClick={handleClearFilter}>
                 Clear
               </button>
-              <button onClick={() => onFilter(filterDate)} className="px-4 py-2 ml-36 rounded bg-gray-400 hover:bg-gray-200">
+              <button onClick={() => onFilter(filterDate)}>
                 Save
               </button>
             </div>
