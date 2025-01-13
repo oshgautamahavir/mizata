@@ -7,7 +7,7 @@ import FilterIcon from './icons/FilterIcon';
 
 function FilterDropdown({ onFilter }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [filterDate, setFilterDate] = useState("")
+  const [filterDate, setFilterDate] = useState("");
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 

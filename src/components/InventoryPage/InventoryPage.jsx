@@ -117,6 +117,10 @@ const InventoryPage = ({}) => {
     fetchItemsHandler();
   }
 
+  const onFilter = () => {
+    fetchItemsHandler();
+  }
+
   return (
     <>
       <div className='title'>
@@ -146,7 +150,7 @@ const InventoryPage = ({}) => {
       <div className='inventory'>
         <div className='header'>
           <div className="search-filter">
-            <FilterDropdown />
+            <FilterDropdown onFilter={onFilter} />
             <div className='search-container'>
               Search:
               <input type='text' className='search-box' id='search'
