@@ -8,6 +8,8 @@ import FilterIcon from './icons/FilterIcon';
 function FilterDropdown({ onFilter }) {
   const [isOpen, setIsOpen] = useState(false);
   const [filterDate, setFilterDate] = useState("");
+  const [checkboxInUse, setCheckboxInUse] = useState(true);
+  const [checkboxInStock, setCheckboxInStock] = useState(true);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -27,8 +29,10 @@ function FilterDropdown({ onFilter }) {
   }, [ref]);
 
   const handleClearFilter = async () => {
-    onFilter("")
-    setFilterDate("")
+    onFilter("");
+    setFilterDate("");
+    setCheckboxInUse(true);
+    setCheckboxInStock(true);
   }
 
   return (
@@ -56,6 +60,8 @@ function FilterDropdown({ onFilter }) {
                   type="checkbox"
                   name="checkboxInUse"
                   id="checkboxInUse"
+                  checked={checkboxInUse}
+                  onChange={(e) => setCheckboxInUse(e.target.checked)}
                 />
                 <label htmlFor="checkboxInUse">
                   In use
@@ -64,11 +70,13 @@ function FilterDropdown({ onFilter }) {
               <div>
                 <input
                   type="checkbox"
-                  name="checkboxReturned"
-                  id="checkboxReturned"
+                  name="checkboxInStock"
+                  id="checkboxInStock"
+                  checked={checkboxInStock}
+                  onChange={(e) => setCheckboxInStock(e.target.checked)}
                 />
-                <label htmlFor="checkboxReturned">
-                  Returned
+                <label htmlFor="checkboxInStock">
+                  In stock
                 </label>
               </div>
             </div>
@@ -76,7 +84,7 @@ function FilterDropdown({ onFilter }) {
               <button onClick={handleClearFilter}>
                 Clear
               </button>
-              <button onClick={() => onFilter(filterDate)}>
+              <button onClick={() => onFilter(filterDate, checkboxInUse, checkboxInStock)}>
                 Save
               </button>
             </div>

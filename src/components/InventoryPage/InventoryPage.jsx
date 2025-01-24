@@ -26,6 +26,8 @@ const InventoryPage = ({}) => {
   const [id, setId] = useState('');
   const [searchKey, setSearchKey] = useState("")
   const [entries, setEntries]= useState(10) // Default value show 10 items
+  const [inUse, setInUse] = useState(true);
+  const [inStock, setInStock] = useState(true);
 
   const searchKeyRef = useRef(searchKey);
   const entriesRef = useRef(entries);
@@ -70,7 +72,7 @@ const InventoryPage = ({}) => {
   // Fetch items handler
   const fetchItemsHandler = async () => {
     const itemsFromServer = await fetchItems(
-      searchKeyRef.current, entriesRef.current
+      searchKeyRef.current, entriesRef.current, filterDate, inUse, inStock
     );
 
     setItems(itemsFromServer.items);
@@ -117,7 +119,11 @@ const InventoryPage = ({}) => {
     fetchItemsHandler();
   }
 
-  const onFilter = () => {
+  const onFilter = (date, inUse, inStock) => {
+    console.log(date, inUse, inStock)
+    setFilterDate(date);
+    setInUse(inUse);
+    setInStock(inStock);
     fetchItemsHandler();
   }
 
