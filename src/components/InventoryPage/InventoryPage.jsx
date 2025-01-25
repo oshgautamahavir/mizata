@@ -29,6 +29,9 @@ const InventoryPage = ({}) => {
   const searchKeyRef = useRef(searchKey);
   const entriesRef = useRef(entries);
 
+  const IN_USE = 0;
+  const IN_STOCK = 1;
+
   const toggleViewModal = () => {
     setShowViewModal(!showViewModal);
   };
@@ -67,7 +70,7 @@ const InventoryPage = ({}) => {
   }, [entries]);
 
   // Fetch items handler
-  const fetchItemsHandler = async (filterDate="", statuses="") => {
+  const fetchItemsHandler = async (filterDate="", statuses=`${IN_USE},${IN_STOCK}`) => {
     const itemsFromServer = await fetchItems(
       searchKeyRef.current, entriesRef.current, filterDate, statuses
     );
@@ -85,7 +88,7 @@ const InventoryPage = ({}) => {
 
   // Delay search call by 300 ms
   const debouncedSearch = useRef(debounce(() => {
-    fetchItemsHandler();
+     fetchItemsHandler();
   }, 300)).current;
 
   useEffect(() => {
@@ -117,9 +120,6 @@ const InventoryPage = ({}) => {
   }
 
   const onFilter = (filterDate, inUse, inStock) => {
-    const IN_USE = 0;
-    const IN_STOCK = 1;
-
     let statuses = [];
 
     if (inUse) {
