@@ -37,14 +37,14 @@
     margin: 24px;
 }
 
-.header button {
+.header .create-button button {
     border: 1px solid;
     border-radius: 4px;
-    background-color: rgb(234 179 8);
+    background-color: var(--mizata-yellow);
     color: white;
 }
 
-.header button:hover {
+.header .create-button button:hover {
     color: white;
     background-color: goldenrod;
 }
@@ -61,11 +61,16 @@
     padding: 0px 4px;
 }
 
+.search-filter {
+    display: flex;
+    gap: 0px 4px;
+}
+
 .search-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 0px 8px;
 }
 
 .search-box {

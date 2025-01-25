@@ -1,0 +1,100 @@
+.filter-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-dropdown .filter-ref {
+    height: 100%;
+}
+
+.filter-dropdown .filter-icon {
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+.filter-dropdown .filter-icon:hover {
+    background-color: var(--mizata-yellow);
+    color: white;
+}
+
+.filter-dropdown svg {
+    height: 36px;
+    width: 36px;
+    stroke: currentColor;
+}
+
+.filter-dropdown button {
+    border-radius: 4px;
+}
+
+.filter-dropdown button:hover {
+    background-color: var(--mizata-yellow);
+    color: white;
+}
+
+.filter-dropdown .open {
+    background-color: var(--mizata-yellow);
+    color: white;
+}
+
+.filter-dropdown .dropdown-content {
+    position: absolute;
+    top: 90%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    list-style: none;
+    width: 300px;
+    z-index: 1000;
+    padding: 0px 8px;
+}
+
+.filter-dropdown p {
+    font-weight: 500;
+    padding: 4px 0px;
+    margin-top: 8px;
+}
+
+.filter-dropdown input {
+    padding: 4px 0px;
+}
+
+.filter-drodown label {
+    padding: 0px 8px;
+}
+
+.filter-dropdown .date-container {
+    margin-left: 16px;
+}
+
+.filter-dropdown .status-container {
+    display: flex;
+    gap: 0px 24px;
+    margin-left: 16px;
+}
+
+.filter-dropdown .status-container div {
+    display: flex;
+    gap: 0px 4px;
+}
+
+.filter-dropdown .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.filter-dropdown .button-container button {
+    padding: 8px 16px;
+    background-color: var(--mizata-yellow);
+    color: white;
+    width: 30%;
+}
+
+.filter-dropdown .button-container button:hover {
+    background-color: goldenrod;
+}

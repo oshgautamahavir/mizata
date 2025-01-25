@@ -13,13 +13,13 @@ import Item from './Item';
 import ViewItemModal from '../Modals/ViewItemModal';
 import CreateOrEditModal from '../Modals/CreateOrEditItemModal';
 import EmptyState from './EmptyState';
+import FilterDropdown from "../Dropdown/FilterDropdown";
 
 import { fetchItems } from "../../store/index";
 
 const InventoryPage = ({}) => {
   const [items, setItems] = useState([])
   const [itemsCount, setItemsCount] = useState(0)
-  const [filterDate, setFilterDate] = useState("")
   const [showViewModal, setShowViewModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [id, setId] = useState('');
@@ -67,9 +67,9 @@ const InventoryPage = ({}) => {
   }, [entries]);
 
   // Fetch items handler
-  const fetchItemsHandler = async () => {
+  const fetchItemsHandler = async (filterDate="", statuses="") => {
     const itemsFromServer = await fetchItems(
-      searchKeyRef.current, entriesRef.current
+      searchKeyRef.current, entriesRef.current, filterDate, statuses
     );
 
     setItems(itemsFromServer.items);
@@ -116,6 +116,22 @@ const InventoryPage = ({}) => {
     fetchItemsHandler();
   }
 
+  const onFilter = (filterDate, inUse, inStock) => {
+    const IN_USE = 0;
+    const IN_STOCK = 1;
+
+    let statuses = [];
+
+    if (inUse) {
+      statuses.push(IN_USE);
+    }
+    if (inStock) {
+      statuses.push(IN_STOCK);
+    }
+  
+    fetchItemsHandler(filterDate, statuses);
+  }
+
   return (
     <>
       <div className='title'>
@@ -144,11 +160,14 @@ const InventoryPage = ({}) => {
       </div>
       <div className='inventory'>
         <div className='header'>
-          <div className='search-container'>
-            Search:
-            <input type='text' className='search-box' id='search'
-              onChange={(e) => setSearchKey(e.target.value)}
-            />
+          <div className="search-filter">
+            <FilterDropdown onFilter={onFilter} />
+            <div className='search-container'>
+              Search:
+              <input type='text' className='search-box' id='search'
+                onChange={(e) => setSearchKey(e.target.value)}
+              />
+            </div>
           </div>
           <div className='show-entries'>
             Show
