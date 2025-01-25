@@ -28,11 +28,11 @@ function FilterDropdown({ onFilter }) {
     };
   }, [ref]);
 
-  const handleClearFilter = async () => {
-    onFilter("");
+  const handleClearFilter = () => {
     setFilterDate("");
     setCheckboxInUse(true);
     setCheckboxInStock(true);
+    onFilter("", true, true);
   }
 
   return (

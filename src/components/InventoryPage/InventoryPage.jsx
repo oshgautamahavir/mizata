@@ -20,14 +20,11 @@ import { fetchItems } from "../../store/index";
 const InventoryPage = ({}) => {
   const [items, setItems] = useState([])
   const [itemsCount, setItemsCount] = useState(0)
-  const [filterDate, setFilterDate] = useState("")
   const [showViewModal, setShowViewModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [id, setId] = useState('');
   const [searchKey, setSearchKey] = useState("")
   const [entries, setEntries]= useState(10) // Default value show 10 items
-  const [inUse, setInUse] = useState(true);
-  const [inStock, setInStock] = useState(true);
 
   const searchKeyRef = useRef(searchKey);
   const entriesRef = useRef(entries);
@@ -70,9 +67,9 @@ const InventoryPage = ({}) => {
   }, [entries]);
 
   // Fetch items handler
-  const fetchItemsHandler = async () => {
+  const fetchItemsHandler = async (filterDate="", statuses="") => {
     const itemsFromServer = await fetchItems(
-      searchKeyRef.current, entriesRef.current, filterDate, inUse, inStock
+      searchKeyRef.current, entriesRef.current, filterDate, statuses
     );
 
     setItems(itemsFromServer.items);
@@ -119,12 +116,20 @@ const InventoryPage = ({}) => {
     fetchItemsHandler();
   }
 
-  const onFilter = (date, inUse, inStock) => {
-    console.log(date, inUse, inStock)
-    setFilterDate(date);
-    setInUse(inUse);
-    setInStock(inStock);
-    fetchItemsHandler();
+  const onFilter = (filterDate, inUse, inStock) => {
+    const IN_USE = 0;
+    const IN_STOCK = 1;
+
+    let statuses = [];
+
+    if (inUse) {
+      statuses.push(IN_USE);
+    }
+    if (inStock) {
+      statuses.push(IN_STOCK);
+    }
+  
+    fetchItemsHandler(filterDate, statuses);
   }
 
   return (
